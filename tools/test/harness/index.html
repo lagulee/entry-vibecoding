@@ -1,0 +1,47 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<!-- 실제 entryjs 워크스페이스(블록 에디터 + 무대)를 띄우는 테스트 페이지 -->
+<link rel="stylesheet" href="../../../node_modules/@entrylabs/entry/dist/entry.css"/>
+<link rel="stylesheet" href="../../../node_modules/@entrylabs/tool/dist/entry-tool.css"/>
+<style>
+/* 엔트리 사이트의 글꼴 이름을 비슷한 글꼴로 대신 연결 (글자 폭 확인용) */
+@font-face{font-family:'Nanum Gothic';src:url(../../../node_modules/@fontsource/noto-sans-kr/files/noto-sans-kr-korean-400-normal.woff2)}
+@font-face{font-family:'D2 Coding';src:url(../../../node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2);unicode-range:U+0000-00FF,U+2000-22FF}
+@font-face{font-family:'D2 Coding';src:url(../../../node_modules/@fontsource/noto-sans-kr/files/noto-sans-kr-korean-400-normal.woff2);unicode-range:U+AC00-D7AF,U+3130-318F,U+1100-11FF}
+</style>
+</head><body>
+<div style="font-family:'Nanum Gothic';position:absolute;left:-99px">가a</div><div style="font-family:'D2 Coding';position:absolute;left:-99px">가a</div>
+<div id="workspace" style="width:1400px;height:900px"></div>
+<script src="../../../node_modules/@entrylabs/entry/extern/lang/ko.js"></script>
+<script src="../../../node_modules/@entrylabs/entry/extern/util/static.js"></script>
+<script src="../../../node_modules/lodash/lodash.min.js"></script>
+<script src="vendor/jquery.min.js"></script>
+<script src="vendor/jquery-ui.min.js"></script>
+<script src="vendor/preloadjs-0.6.0.min.js"></script>
+<script src="vendor/easeljs-0.8.0.min.js"></script>
+<script src="vendor/soundjs-0.6.0.combined.js"></script>
+<script src="vendor/velocity.min.js"></script>
+<script src="vendor/codemirror/lib/codemirror.js"></script>
+<script src="vendor/codemirror/addon/hint/show-hint.js"></script>
+<script src="vendor/codemirror/addon/lint/lint.js"></script>
+<script src="vendor/codemirror/mode/javascript/javascript.js"></script>
+<script src="vendor/codemirror/mode/python/python.js"></script>
+<script src="vendor/fuzzy.js"></script>
+<script src="vendor/react18/react.production.min.js"></script>
+<script src="vendor/react18/react-dom.production.min.js"></script>
+<script src="../../../node_modules/@entrylabs/tool/dist/entry-tool.js"></script>
+<script src="../../../node_modules/@entrylabs/entry/extern/blockly/blockly_compressed.js"></script>
+<script src="../../../node_modules/@entrylabs/entry/extern/util/bignumber.min.js"></script>
+<script src="../../../node_modules/@entrylabs/entry/extern/util/CanvasInput.js"></script>
+<script src="../../../node_modules/@entrylabs/entry/extern/util/handle.js"></script>
+<script src="../../../node_modules/@entrylabs/entry/extern/util/filbert.js"></script>
+<script src="../../../node_modules/@entrylabs/entry/extern/util/ndgmr.Collision.js"></script>
+<script src="vendor/sound-editor.js"></script>
+<script src="../../../node_modules/@entrylabs/legacy-video/dist/index.js"></script>
+<script src="../../../node_modules/@entrylabs/entry/dist/entry.js"></script>
+<script>
+window.bootEntry = function () {
+  Entry.creationChangedEvent = new Entry.Event(window);
+  Entry.init(document.getElementById('workspace'), { type: 'workspace', libDir: '../../../node_modules', defaultDir: '../../../node_modules/@entrylabs/entry', fonts: [], textCodingEnable: false });
+  return 'ok';
+};
+</script></body></html>

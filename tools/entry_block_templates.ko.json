@@ -1,0 +1,1575 @@
+{
+ "when_run_button_click": {
+  "template": "%1 시작하기 버튼을 클릭했을 때",
+  "skeleton": "basic_event",
+  "params": [
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "hide": {
+  "template": "모양 숨기기 %1",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "set_variable": {
+  "template": "%1 를 %2 (으)로 정하기 %3",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "DropdownDynamic",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "number": {
+  "template": "%1",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "TextInput",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "create_clone": {
+  "template": "%1 의 복제본 만들기 %2",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "DropdownDynamic",
+    "text": null,
+    "options": [
+     [
+      "자신",
+      "self"
+     ]
+    ]
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "when_clone_start": {
+  "template": "%1 복제본이 처음 생성되었을 때",
+  "skeleton": "basic_event",
+  "params": [
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "locate_xy": {
+  "template": "x: %1 y: %2 위치로 이동하기 %3",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "value_of_index_from_list": {
+  "template": "%1 %2 %3 %4 %5",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "Text",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "DropdownDynamic",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "의",
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "번째 항목",
+    "options": null
+   }
+  ]
+ },
+ "get_variable": {
+  "template": "%1 %2",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "DropdownDynamic",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "값",
+    "options": null
+   }
+  ]
+ },
+ "repeat_inf": {
+  "template": "계속 반복하기 %1",
+  "skeleton": "basic_loop",
+  "params": [
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "_if": {
+  "template": "만일 %1 (이)라면 %2",
+  "skeleton": "basic_loop",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "boolean_basic_operator": {
+  "template": "%1 %2 %3",
+  "skeleton": "basic_boolean_field",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Dropdown",
+    "text": null,
+    "options": [
+     [
+      "=",
+      "EQUAL"
+     ],
+     [
+      "!=",
+      "NOT_EQUAL"
+     ],
+     [
+      ">",
+      "GREATER"
+     ],
+     [
+      "<",
+      "LESS"
+     ],
+     [
+      "≥",
+      "GREATER_OR_EQUAL"
+     ],
+     [
+      "≤",
+      "LESS_OR_EQUAL"
+     ]
+    ]
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "if_else": {
+  "template": "만일 %1 (이)라면 %2 %3 아니면",
+  "skeleton": "basic_double_loop",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "LineBreak",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "change_to_some_shape": {
+  "template": "%1 모양으로 바꾸기 %2",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "change_effect_amount": {
+  "template": "%1 효과를 %2 (으)로 정하기 %3",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Dropdown",
+    "text": null,
+    "options": [
+     [
+      "색깔",
+      "color"
+     ],
+     [
+      "밝기",
+      "brightness"
+     ],
+     [
+      "투명도",
+      "transparency"
+     ]
+    ]
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "show": {
+  "template": "모양 보이기 %1",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "when_object_click": {
+  "template": "%1 오브젝트를 클릭했을 때",
+  "skeleton": "basic_event",
+  "params": [
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "boolean_and_or": {
+  "template": "%1 %2 %3",
+  "skeleton": "basic_boolean_field",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Dropdown",
+    "text": null,
+    "options": [
+     [
+      "그리고",
+      "AND"
+     ],
+     [
+      "또는",
+      "OR"
+     ]
+    ]
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "message_cast": {
+  "template": "%1 신호 보내기 %2",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "DropdownDynamic",
+    "text": null,
+    "options": [
+     [
+      "대상 없음",
+      "null"
+     ]
+    ]
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "text": {
+  "template": "%1",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "TextInput",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "get_pictures": {
+  "template": "%1  ",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "DropdownDynamic",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "quotient_and_mod": {
+  "template": "%1 %2 %3 %4 %5 %6",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "Text",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "/",
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "의",
+    "options": null
+   },
+   {
+    "type": "Dropdown",
+    "text": null,
+    "options": [
+     [
+      "몫",
+      "QUOTIENT"
+     ],
+     [
+      "나머지",
+      "MOD"
+     ]
+    ]
+   }
+  ]
+ },
+ "text_write": {
+  "template": "%1 (이)라고 글쓰기 %2",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "combine_something": {
+  "template": "%1 %2 %3 %4 %5",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "Text",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "과(와)",
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "을(를) 합친 값",
+    "options": null
+   }
+  ]
+ },
+ "calc_basic": {
+  "template": "%1 %2 %3",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Dropdown",
+    "text": null,
+    "options": [
+     [
+      "+",
+      "PLUS"
+     ],
+     [
+      "-",
+      "MINUS"
+     ],
+     [
+      "x",
+      "MULTI"
+     ],
+     [
+      "/",
+      "DIVIDE"
+     ]
+    ]
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "calc_operation": {
+  "template": "%1 %2 %3 %4",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "Text",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "의",
+    "options": null
+   },
+   {
+    "type": "Dropdown",
+    "text": null,
+    "options": [
+     [
+      "제곱",
+      "square"
+     ],
+     [
+      "루트",
+      "root"
+     ],
+     [
+      "사인",
+      "sin"
+     ],
+     [
+      "코사인",
+      "cos"
+     ],
+     [
+      "탄젠트",
+      "tan"
+     ],
+     [
+      "아크사인",
+      "asin_radian"
+     ],
+     [
+      "아크코사인",
+      "acos_radian"
+     ],
+     [
+      "아크탄젠트",
+      "atan_radian"
+     ],
+     [
+      "로그",
+      "log"
+     ],
+     [
+      "자연로그",
+      "ln"
+     ],
+     [
+      "소수점 부분",
+      "unnatural"
+     ],
+     [
+      "소수점 버림값",
+      "floor"
+     ],
+     [
+      "소수점 올림값",
+      "ceil"
+     ],
+     [
+      "소수점 반올림값",
+      "round"
+     ],
+     [
+      "팩토리얼",
+      "factorial"
+     ],
+     [
+      "절댓값",
+      "abs"
+     ]
+    ]
+   }
+  ]
+ },
+ "length_of_list": {
+  "template": "%1 %2 %3",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "Text",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "DropdownDynamic",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": " 항목 수",
+    "options": null
+   }
+  ]
+ },
+ "remove_value_from_list": {
+  "template": "%1 번째 항목을 %2 에서 삭제하기 %3",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "DropdownDynamic",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "set_scale_size": {
+  "template": "크기를 %1 (으)로 정하기 %2",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "repeat_basic": {
+  "template": "%1 번 반복하기 %2",
+  "skeleton": "basic_loop",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "change_scale_size": {
+  "template": "크기를 %1 만큼 바꾸기 %2",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "add_effect_amount": {
+  "template": "%1 효과를 %2 만큼 주기 %3",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Dropdown",
+    "text": null,
+    "options": [
+     [
+      "색깔",
+      "color"
+     ],
+     [
+      "밝기",
+      "brightness"
+     ],
+     [
+      "투명도",
+      "transparency"
+     ]
+    ]
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "delete_clone": {
+  "template": "이 복제본 삭제하기 %1",
+  "skeleton": "basic_without_next",
+  "params": [
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "set_color": {
+  "template": "그리기 색을 %1 (으)로 정하기 %2",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "color": {
+  "template": "%1",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "Color",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "set_thickness": {
+  "template": "그리기 굵기를 %1 (으)로 정하기 %2",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "set_brush_tranparency": {
+  "template": "붓의 투명도를 %1 % 로 정하기 %2",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "stop_drawing": {
+  "template": "그리기 멈추기 %1",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "brush_erase_all": {
+  "template": "모든 붓 지우기 %1",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "start_drawing": {
+  "template": "그리기 시작하기 %1",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "set_visible_answer": {
+  "template": "대답 %1 %2",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Dropdown",
+    "text": null,
+    "options": [
+     [
+      "보이기",
+      "SHOW"
+     ],
+     [
+      "숨기기",
+      "HIDE"
+     ]
+    ]
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "set_visible_project_timer": {
+  "template": "%1 %2 %3 %4",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Text",
+    "text": "초시계",
+    "options": null
+   },
+   {
+    "type": "Dropdown",
+    "text": null,
+    "options": [
+     [
+      "보이기",
+      "SHOW"
+     ],
+     [
+      "숨기기",
+      "HIDE"
+     ]
+    ]
+   },
+   {
+    "type": "Text",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "choose_project_timer_action": {
+  "template": "%1 %2 %3 %4",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Text",
+    "text": "초시계",
+    "options": null
+   },
+   {
+    "type": "Dropdown",
+    "text": null,
+    "options": [
+     [
+      "시작하기",
+      "START"
+     ],
+     [
+      "정지하기",
+      "STOP"
+     ],
+     [
+      "초기화하기",
+      "RESET"
+     ]
+    ]
+   },
+   {
+    "type": "Text",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "change_variable": {
+  "template": "%1 에 %2 만큼 더하기 %3",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "DropdownDynamic",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "when_message_cast": {
+  "template": "%1 %2 신호를 받았을 때",
+  "skeleton": "basic_event",
+  "params": [
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "DropdownDynamic",
+    "text": null,
+    "options": [
+     [
+      "대상 없음",
+      "null"
+     ]
+    ]
+   }
+  ]
+ },
+ "mouse_clicked": {
+  "template": "%1 마우스를 클릭했을 때",
+  "skeleton": "basic_event",
+  "params": [
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "coordinate_mouse": {
+  "template": "%1 %2 %3",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "Text",
+    "text": "마우스",
+    "options": null
+   },
+   {
+    "type": "Dropdown",
+    "text": null,
+    "options": [
+     [
+      "x",
+      "x"
+     ],
+     [
+      "y",
+      "y"
+     ]
+    ]
+   },
+   {
+    "type": "Text",
+    "text": "좌푯값",
+    "options": null
+   }
+  ]
+ },
+ "boolean_not": {
+  "template": "%1 %2 %3",
+  "skeleton": "basic_boolean_field",
+  "params": [
+   {
+    "type": "Text",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "(이)가 아니다",
+    "options": null
+   }
+  ]
+ },
+ "repeat_while_true": {
+  "template": "%1 %2  반복하기 %3",
+  "skeleton": "basic_loop",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Dropdown",
+    "text": null,
+    "options": [
+     [
+      "이 될 때까지",
+      "until"
+     ],
+     [
+      "인 동안",
+      "while"
+     ]
+    ]
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "is_clicked": {
+  "template": "%1",
+  "skeleton": "basic_boolean_field",
+  "params": [
+   {
+    "type": "Text",
+    "text": "마우스를 클릭했는가?",
+    "options": null
+   }
+  ]
+ },
+ "change_value_list_index": {
+  "template": "%1    %2 번째 항목을 %3 (으)로 바꾸기 %4",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "DropdownDynamic",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "when_some_key_pressed": {
+  "template": "%1 %2 키를 눌렀을 때",
+  "skeleton": "basic_event",
+  "params": [
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Keyboard",
+    "text": null,
+    "options": [
+     [
+      "백스페이스",
+      "8"
+     ],
+     [
+      "Tab",
+      "9"
+     ],
+     [
+      "엔터",
+      "13"
+     ],
+     [
+      "Shift",
+      "16"
+     ],
+     [
+      "Ctrl",
+      "17"
+     ],
+     [
+      "Alt",
+      "18"
+     ],
+     [
+      "Esc",
+      "27"
+     ],
+     [
+      "스페이스",
+      "32"
+     ],
+     [
+      "왼쪽 화살표",
+      "37"
+     ],
+     [
+      "위쪽 화살표",
+      "38"
+     ],
+     [
+      "오른쪽 화살표",
+      "39"
+     ],
+     [
+      "아래쪽 화살표",
+      "40"
+     ],
+     [
+      "0",
+      "48"
+     ],
+     [
+      "1",
+      "49"
+     ],
+     [
+      "2",
+      "50"
+     ],
+     [
+      "3",
+      "51"
+     ],
+     [
+      "4",
+      "52"
+     ],
+     [
+      "5",
+      "53"
+     ],
+     [
+      "6",
+      "54"
+     ],
+     [
+      "7",
+      "55"
+     ],
+     [
+      "8",
+      "56"
+     ],
+     [
+      "9",
+      "57"
+     ],
+     [
+      "a",
+      "65"
+     ],
+     [
+      "b",
+      "66"
+     ],
+     [
+      "c",
+      "67"
+     ],
+     [
+      "d",
+      "68"
+     ],
+     [
+      "e",
+      "69"
+     ],
+     [
+      "f",
+      "70"
+     ],
+     [
+      "g",
+      "71"
+     ],
+     [
+      "h",
+      "72"
+     ],
+     [
+      "i",
+      "73"
+     ],
+     [
+      "j",
+      "74"
+     ],
+     [
+      "k",
+      "75"
+     ],
+     [
+      "l",
+      "76"
+     ],
+     [
+      "m",
+      "77"
+     ],
+     [
+      "n",
+      "78"
+     ],
+     [
+      "o",
+      "79"
+     ],
+     [
+      "p",
+      "80"
+     ],
+     [
+      "q",
+      "81"
+     ],
+     [
+      "r",
+      "82"
+     ],
+     [
+      "s",
+      "83"
+     ],
+     [
+      "t",
+      "84"
+     ],
+     [
+      "u",
+      "85"
+     ],
+     [
+      "v",
+      "86"
+     ],
+     [
+      "w",
+      "87"
+     ],
+     [
+      "x",
+      "88"
+     ],
+     [
+      "y",
+      "89"
+     ],
+     [
+      "z",
+      "90"
+     ],
+     [
+      ";",
+      "186"
+     ],
+     [
+      "=",
+      "187"
+     ],
+     [
+      ",",
+      "188"
+     ],
+     [
+      "-",
+      "189"
+     ],
+     [
+      ".",
+      "190"
+     ],
+     [
+      "/",
+      "191"
+     ],
+     [
+      "~",
+      "192"
+     ],
+     [
+      "[",
+      "219"
+     ],
+     [
+      "백슬래시",
+      "220"
+     ],
+     [
+      "]",
+      "221"
+     ],
+     [
+      "'",
+      "222"
+     ]
+    ]
+   }
+  ]
+ },
+ "function_create": {
+  "template": "함수 정의하기 %1 %2",
+  "skeleton": "basic_create",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "function_field_label": {
+  "template": "%1%2",
+  "skeleton": "basic_param",
+  "params": [
+   {
+    "type": "TextInput",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Output",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "function_field_string": {
+  "template": "%1%2",
+  "skeleton": "basic_param",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Output",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "set_func_variable": {
+  "template": "%1 를 %2 (으)로 정하기 %3",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "DropdownDynamic",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "get_func_variable": {
+  "template": "%1 %2",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "DropdownDynamic",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "값",
+    "options": null
+   }
+  ]
+ },
+ "add_value_to_list": {
+  "template": "%1 항목을 %2 에 추가하기 %3",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "DropdownDynamic",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "get_project_timer_value": {
+  "template": "%1 %2",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "Text",
+    "text": " 초시계 값",
+    "options": null
+   }
+  ]
+ },
+ "ask_and_wait": {
+  "template": "%1 을(를) 묻고 대답 기다리기 %2",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "get_canvas_input_value": {
+  "template": "%1  ",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "Text",
+    "text": " 대답 ",
+    "options": null
+   }
+  ]
+ },
+ "is_type": {
+  "template": "%1 %2 %3 %4",
+  "skeleton": "basic_boolean_field",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "(이)가",
+    "options": null
+   },
+   {
+    "type": "Dropdown",
+    "text": null,
+    "options": [
+     [
+      "숫자",
+      "number"
+     ],
+     [
+      "영문",
+      "en"
+     ],
+     [
+      "한글",
+      "ko"
+     ]
+    ]
+   },
+   {
+    "type": "Text",
+    "text": "인가?",
+    "options": null
+   }
+  ]
+ },
+ "length_of_string": {
+  "template": "%1 %2 %3",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "Text",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "의 글자 수",
+    "options": null
+   }
+  ]
+ }
+}

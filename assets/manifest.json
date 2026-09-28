@@ -1,0 +1,427 @@
+{
+ "bg": {
+  "file": "bg.png",
+  "width": 960,
+  "height": 540
+ },
+ "frame": {
+  "file": "frame.png",
+  "width": 960,
+  "height": 540
+ },
+ "body1": {
+  "file": "body1.png",
+  "width": 128,
+  "height": 128
+ },
+ "body2": {
+  "file": "body2.png",
+  "width": 128,
+  "height": 128
+ },
+ "body3": {
+  "file": "body3.png",
+  "width": 128,
+  "height": 128
+ },
+ "body4": {
+  "file": "body4.png",
+  "width": 128,
+  "height": 128
+ },
+ "body5": {
+  "file": "body5.png",
+  "width": 128,
+  "height": 128
+ },
+ "body6": {
+  "file": "body6.png",
+  "width": 128,
+  "height": 128
+ },
+ "body7": {
+  "file": "body7.png",
+  "width": 128,
+  "height": 128
+ },
+ "body8": {
+  "file": "body8.png",
+  "width": 128,
+  "height": 128
+ },
+ "ring": {
+  "file": "ring.png",
+  "width": 128,
+  "height": 128
+ },
+ "burst": {
+  "file": "burst.png",
+  "width": 128,
+  "height": 128
+ },
+ "b1": {
+  "file": "b1.png",
+  "width": 88,
+  "height": 40
+ },
+ "b1a": {
+  "file": "b1a.png",
+  "width": 88,
+  "height": 40
+ },
+ "b2": {
+  "file": "b2.png",
+  "width": 88,
+  "height": 40
+ },
+ "b2a": {
+  "file": "b2a.png",
+  "width": 88,
+  "height": 40
+ },
+ "b3": {
+  "file": "b3.png",
+  "width": 88,
+  "height": 40
+ },
+ "b3a": {
+  "file": "b3a.png",
+  "width": 88,
+  "height": 40
+ },
+ "b4": {
+  "file": "b4.png",
+  "width": 44,
+  "height": 40
+ },
+ "b4a": {
+  "file": "b4a.png",
+  "width": 44,
+  "height": 40
+ },
+ "b5": {
+  "file": "b5.png",
+  "width": 44,
+  "height": 40
+ },
+ "b5a": {
+  "file": "b5a.png",
+  "width": 44,
+  "height": 40
+ },
+ "b6": {
+  "file": "b6.png",
+  "width": 44,
+  "height": 40
+ },
+ "b6a": {
+  "file": "b6a.png",
+  "width": 44,
+  "height": 40
+ },
+ "b7": {
+  "file": "b7.png",
+  "width": 44,
+  "height": 40
+ },
+ "b7a": {
+  "file": "b7a.png",
+  "width": 44,
+  "height": 40
+ },
+ "b8": {
+  "file": "b8.png",
+  "width": 44,
+  "height": 40
+ },
+ "b8a": {
+  "file": "b8a.png",
+  "width": 44,
+  "height": 40
+ },
+ "b9": {
+  "file": "b9.png",
+  "width": 44,
+  "height": 40
+ },
+ "b9a": {
+  "file": "b9a.png",
+  "width": 44,
+  "height": 40
+ },
+ "b10": {
+  "file": "b10.png",
+  "width": 68,
+  "height": 40
+ },
+ "b10a": {
+  "file": "b10a.png",
+  "width": 68,
+  "height": 40
+ },
+ "b14_len1": {
+  "file": "b14_len1.png",
+  "width": 60,
+  "height": 40
+ },
+ "b14_len2": {
+  "file": "b14_len2.png",
+  "width": 60,
+  "height": 40
+ },
+ "b14_len3": {
+  "file": "b14_len3.png",
+  "width": 60,
+  "height": 40
+ },
+ "b14_len4": {
+  "file": "b14_len4.png",
+  "width": 60,
+  "height": 40
+ },
+ "b15": {
+  "file": "b15.png",
+  "width": 52,
+  "height": 40
+ },
+ "b15a": {
+  "file": "b15a.png",
+  "width": 52,
+  "height": 40
+ },
+ "b11": {
+  "file": "b11.png",
+  "width": 68,
+  "height": 40
+ },
+ "b11a": {
+  "file": "b11a.png",
+  "width": 68,
+  "height": 40
+ },
+ "b12": {
+  "file": "b12.png",
+  "width": 32,
+  "height": 32
+ },
+ "b12a": {
+  "file": "b12a.png",
+  "width": 32,
+  "height": 32
+ },
+ "b13": {
+  "file": "b13.png",
+  "width": 32,
+  "height": 32
+ },
+ "b13a": {
+  "file": "b13a.png",
+  "width": 32,
+  "height": 32
+ },
+ "b16": {
+  "file": "b16.png",
+  "width": 72,
+  "height": 28
+ },
+ "b17": {
+  "file": "b17.png",
+  "width": 72,
+  "height": 28
+ },
+ "b18": {
+  "file": "b18.png",
+  "width": 72,
+  "height": 28
+ },
+ "b19": {
+  "file": "b19.png",
+  "width": 56,
+  "height": 28
+ },
+ "b20": {
+  "file": "b20.png",
+  "width": 56,
+  "height": 28
+ },
+ "b21": {
+  "file": "b21.png",
+  "width": 56,
+  "height": 28
+ },
+ "b22": {
+  "file": "b22.png",
+  "width": 60,
+  "height": 28
+ },
+ "b25": {
+  "file": "b25.png",
+  "width": 76,
+  "height": 28
+ },
+ "b25a": {
+  "file": "b25a.png",
+  "width": 76,
+  "height": 28
+ },
+ "b26": {
+  "file": "b26.png",
+  "width": 76,
+  "height": 28
+ },
+ "b26a": {
+  "file": "b26a.png",
+  "width": 76,
+  "height": 28
+ },
+ "b27": {
+  "file": "b27.png",
+  "width": 76,
+  "height": 28
+ },
+ "b27a": {
+  "file": "b27a.png",
+  "width": 76,
+  "height": 28
+ },
+ "b28": {
+  "file": "b28.png",
+  "width": 116,
+  "height": 24
+ },
+ "b29": {
+  "file": "b29.png",
+  "width": 112,
+  "height": 24
+ },
+ "b23": {
+  "file": "b23.png",
+  "width": 80,
+  "height": 28
+ },
+ "b24": {
+  "file": "b24.png",
+  "width": 64,
+  "height": 28
+ },
+ "b31": {
+  "file": "b31.png",
+  "width": 68,
+  "height": 30
+ },
+ "b31a": {
+  "file": "b31a.png",
+  "width": 68,
+  "height": 30
+ },
+ "b30": {
+  "file": "b30.png",
+  "width": 60,
+  "height": 30
+ },
+ "b30a": {
+  "file": "b30a.png",
+  "width": 60,
+  "height": 30
+ },
+ "b40": {
+  "file": "b40.png",
+  "width": 264,
+  "height": 48
+ },
+ "b41": {
+  "file": "b41.png",
+  "width": 264,
+  "height": 48
+ },
+ "b42": {
+  "file": "b42.png",
+  "width": 264,
+  "height": 48
+ },
+ "b43": {
+  "file": "b43.png",
+  "width": 276,
+  "height": 276
+ },
+ "b44": {
+  "file": "b44.png",
+  "width": 276,
+  "height": 276
+ },
+ "b45": {
+  "file": "b45.png",
+  "width": 276,
+  "height": 276
+ },
+ "b46": {
+  "file": "b46.png",
+  "width": 160,
+  "height": 36
+ },
+ "b46a": {
+  "file": "b46a.png",
+  "width": 160,
+  "height": 36
+ },
+ "b47": {
+  "file": "b47.png",
+  "width": 172,
+  "height": 300
+ },
+ "b48": {
+  "file": "b48.png",
+  "width": 172,
+  "height": 300
+ },
+ "b49": {
+  "file": "b49.png",
+  "width": 172,
+  "height": 300
+ },
+ "b50": {
+  "file": "b50.png",
+  "width": 172,
+  "height": 300
+ },
+ "b51": {
+  "file": "b51.png",
+  "width": 172,
+  "height": 300
+ },
+ "b52": {
+  "file": "b52.png",
+  "width": 160,
+  "height": 36
+ },
+ "b52a": {
+  "file": "b52a.png",
+  "width": 160,
+  "height": 36
+ },
+ "b53": {
+  "file": "b53.png",
+  "width": 220,
+  "height": 36
+ },
+ "screen_start": {
+  "file": "screen_start.png",
+  "width": 960,
+  "height": 540
+ },
+ "screen_mode": {
+  "file": "screen_mode.png",
+  "width": 960,
+  "height": 540
+ },
+ "screen_preset": {
+  "file": "screen_preset.png",
+  "width": 960,
+  "height": 540
+ },
+ "screen_help": {
+  "file": "screen_help.png",
+  "width": 960,
+  "height": 540
+ }
+}

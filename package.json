@@ -1,0 +1,24 @@
+{
+  "name": "entry-vibecoding",
+  "version": "1.0.0",
+  "private": true,
+  "description": "엔트리(Entry) 작품을 코드로 설계·생성·검증하는 바이브 코딩 도구 — GRAVITY LAB 중력 시뮬레이터",
+  "scripts": {
+    "art": "node tools/gl_art.js assets",
+    "build": "GL_BLOCK_DOC=docs/BLOCKS.md node tools/build_gravity_lab.js assets dist/GRAVITY_LAB.ent",
+    "test:ref": "node tools/test/reference_selftest.js",
+    "test:setup": "bash tools/test/harness/setup.sh",
+    "test:entry": "node tools/test/harness/run.js dist/GRAVITY_LAB.ent tools/test/harness/suite.js",
+    "test:perf": "node tools/test/harness/run.js dist/GRAVITY_LAB.ent tools/test/harness/perf.js"
+  },
+  "devDependencies": {
+    "@entrylabs/entry": "4.0.23",
+    "@entrylabs/legacy-video": "1.0.1",
+    "@entrylabs/tool": "2.0.9",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/noto-sans-kr": "^5.3.0",
+    "@fontsource/space-grotesk": "^5.3.0",
+    "lodash": "4.17.21",
+    "playwright-core": "1.63.0"
+  }
+}
