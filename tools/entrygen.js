@@ -85,6 +85,11 @@ const mouseY = () => blk('coordinate_mouse', [null, 'y', null]);
 const answer = () => blk('get_canvas_input_value', [null]);
 const isNumber = (a) => blk('is_type', [val(a), null, 'number', null]);
 const lenStr = (a) => blk('length_of_string', [null, val(a), null]);
+/** 정수 두 개면 양 끝을 포함한 정수 난수, 하나라도 소수면 소수 둘째 자리 난수 */
+const rand = (a, b) => blk('calc_rand', [null, val(a), null, val(b), null]);
+/** 글자 추출(1부터). 범위를 벗어나면 엔트리가 오류를 낸다 */
+const charAt = (s, i) => blk('char_at', [null, val(s), null, val(i), null]);
+const sin = (deg) => mathOp('sin', deg);
 
 // ---------- 판단 ----------
 const cmp = (a, op, b) => blk('boolean_basic_operator', [val(a), op, val(b)]);
@@ -179,6 +184,9 @@ const penSize = (x) => blk('set_thickness', [val(x), null]);
 const penAlpha = (x) => blk('set_brush_tranparency', [val(x), null]);
 const penClear = () => blk('brush_erase_all', [null]);
 const write = (x) => blk('text_write', [val(x), null]);
+/** 소리 재생: 오브젝트의 소리 이름(문자열 값 블록도 가능) */
+const playSound = (x) => blk('sound_something_with_block', [val(x), null]);
+const changeSize = (x) => blk('change_scale_size', [val(x), null]);
 
 // ---------- 함수 ----------
 /**
@@ -260,6 +268,9 @@ class Project {
         P = this;
     }
     variable(name, value = 0, opt = {}) {
+        if (this.vars[name]) {
+            throw new Error(`duplicate variable ${name}`); // 이름으로 찾으므로 같은 이름은 덮어써진다
+        }
         this.vars[name] = {
             name,
             id: hash(),
@@ -317,14 +328,15 @@ class Project {
         return p.id;
     }
     /**
-     * pictures: [{name, file, width, height, scale}] (file 은 상대 경로)
+     * pictures: [{name, file, thumb?, width, height}] · sounds: [{name, file, duration}] (file 은 상대 경로)
      */
-    sprite({ name, pictures, entity = {}, rotateMethod = 'none' }) {
+    sprite({ name, pictures, sounds = [], entity = {}, rotateMethod = 'none' }) {
         const id = (this._reserved && this._reserved[name]) || hash();
         const pics = pictures.map((p) => ({
             id: hash(),
             name: p.name,
             _file: p.file,
+            _thumb: p.thumb,
             imageType: 'png',
             dimension: { width: p.width, height: p.height },
         }));
@@ -337,7 +349,10 @@ class Project {
             objectType: 'sprite',
             rotateMethod,
             scene: this.sceneId,
-            sprite: { pictures: pics, sounds: [] },
+            sprite: {
+                pictures: pics,
+                sounds: sounds.map((x) => ({ id: hash(), name: x.name, _file: x.file, ext: '.mp3', duration: x.duration })),
+            },
             selectedPictureId: pics[0].id,
             lock: false,
             entity: {
@@ -495,14 +510,14 @@ function countBlocks(thread) {
 module.exports = {
     Project, hash, blk, val,
     add, sub, mul, div, mathOp, sqrt, abs, floor, round, sq, mod, quot, join,
-    mouseX, mouseY, answer, isNumber, lenStr,
+    mouseX, mouseY, answer, isNumber, lenStr, rand, charAt, sin,
     eq, ne, gt, lt, ge, le, and, or, not, mouseDown, keyDown,
     v, setv, chgv, item, setItem, addItem, delItem, listLen, showList, hideList,
     If, IfElse, Forever, Repeat, Until, Wait, WaitUntil, StopThis, StopAll, Clone, DeleteClone,
     Ask, HideAnswer, send, sendWait,
     onStart, onMsg, onClone, onKey, onObjClick, onMouseDown,
     goXY, show, hide, setSize, shape, shapeByName, setEffect, clearEffects, toFront,
-    penDown, penUp, penColor, penSize, penAlpha, penClear, write,
+    penDown, penUp, penColor, penSize, penAlpha, penClear, write, playSound, changeSize,
     defineFunction, param, call, lget, lset,
     countBlocks,
 };

@@ -47,6 +47,11 @@ function serve() {
             p.fileurl = rel + p.fileurl;
             p.thumbUrl = rel + p.thumbUrl;
         }
+        for (const s of o.sprite.sounds || []) {
+            if (s.fileurl) {
+                s.fileurl = rel + s.fileurl;
+            }
+        }
     }
     const server = await serve();
     const port = server.address().port;

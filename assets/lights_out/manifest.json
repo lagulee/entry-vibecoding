@@ -1,0 +1,830 @@
+{
+ "scr_title": {
+  "file": "scr_title.png",
+  "thumb": "thumb/scr_title.png",
+  "width": 960,
+  "height": 540
+ },
+ "scr_help": {
+  "file": "scr_help.png",
+  "thumb": "thumb/scr_help.png",
+  "width": 960,
+  "height": 540
+ },
+ "scr_skin": {
+  "file": "scr_skin.png",
+  "thumb": "thumb/scr_skin.png",
+  "width": 960,
+  "height": 540
+ },
+ "scr_stages": {
+  "file": "scr_stages.png",
+  "thumb": "thumb/scr_stages.png",
+  "width": 960,
+  "height": 540
+ },
+ "scr_puzzle": {
+  "file": "scr_puzzle.png",
+  "thumb": "thumb/scr_puzzle.png",
+  "width": 960,
+  "height": 540
+ },
+ "scr_vsset_ai": {
+  "file": "scr_vsset_ai.png",
+  "thumb": "thumb/scr_vsset_ai.png",
+  "width": 960,
+  "height": 540
+ },
+ "scr_vsset_pvp": {
+  "file": "scr_vsset_pvp.png",
+  "thumb": "thumb/scr_vsset_pvp.png",
+  "width": 960,
+  "height": 540
+ },
+ "scr_race": {
+  "file": "scr_race.png",
+  "thumb": "thumb/scr_race.png",
+  "width": 960,
+  "height": 540
+ },
+ "c1_0": {
+  "file": "c1_0.png",
+  "thumb": "thumb/c1_0.png",
+  "width": 128,
+  "height": 128
+ },
+ "c1_1": {
+  "file": "c1_1.png",
+  "thumb": "thumb/c1_1.png",
+  "width": 128,
+  "height": 128
+ },
+ "c2_0": {
+  "file": "c2_0.png",
+  "thumb": "thumb/c2_0.png",
+  "width": 128,
+  "height": 128
+ },
+ "c2_1": {
+  "file": "c2_1.png",
+  "thumb": "thumb/c2_1.png",
+  "width": 128,
+  "height": 128
+ },
+ "c3_0": {
+  "file": "c3_0.png",
+  "thumb": "thumb/c3_0.png",
+  "width": 128,
+  "height": 128
+ },
+ "c3_1": {
+  "file": "c3_1.png",
+  "thumb": "thumb/c3_1.png",
+  "width": 128,
+  "height": 128
+ },
+ "mark": {
+  "file": "mark.png",
+  "thumb": "thumb/mark.png",
+  "width": 128,
+  "height": 128
+ },
+ "hint": {
+  "file": "hint.png",
+  "thumb": "thumb/hint.png",
+  "width": 128,
+  "height": 128
+ },
+ "cur_p1": {
+  "file": "cur_p1.png",
+  "thumb": "thumb/cur_p1.png",
+  "width": 128,
+  "height": 128
+ },
+ "cur_p2": {
+  "file": "cur_p2.png",
+  "thumb": "thumb/cur_p2.png",
+  "width": 128,
+  "height": 128
+ },
+ "cur_ai": {
+  "file": "cur_ai.png",
+  "thumb": "thumb/cur_ai.png",
+  "width": 128,
+  "height": 128
+ },
+ "stars0": {
+  "file": "stars0.png",
+  "thumb": "thumb/stars0.png",
+  "width": 68,
+  "height": 24
+ },
+ "stars1": {
+  "file": "stars1.png",
+  "thumb": "thumb/stars1.png",
+  "width": 68,
+  "height": 24
+ },
+ "stars2": {
+  "file": "stars2.png",
+  "thumb": "thumb/stars2.png",
+  "width": 68,
+  "height": 24
+ },
+ "stars3": {
+  "file": "stars3.png",
+  "thumb": "thumb/stars3.png",
+  "width": 68,
+  "height": 24
+ },
+ "lock": {
+  "file": "lock.png",
+  "thumb": "thumb/lock.png",
+  "width": 68,
+  "height": 24
+ },
+ "b1": {
+  "file": "b1.png",
+  "thumb": "thumb/b1.png",
+  "width": 264,
+  "height": 192
+ },
+ "b2": {
+  "file": "b2.png",
+  "thumb": "thumb/b2.png",
+  "width": 264,
+  "height": 192
+ },
+ "b3": {
+  "file": "b3.png",
+  "thumb": "thumb/b3.png",
+  "width": 264,
+  "height": 192
+ },
+ "b4": {
+  "file": "b4.png",
+  "thumb": "thumb/b4.png",
+  "width": 192,
+  "height": 44
+ },
+ "b5": {
+  "file": "b5.png",
+  "thumb": "thumb/b5.png",
+  "width": 192,
+  "height": 44
+ },
+ "b6": {
+  "file": "b6.png",
+  "thumb": "thumb/b6.png",
+  "width": 192,
+  "height": 40
+ },
+ "b7": {
+  "file": "b7.png",
+  "thumb": "thumb/b7.png",
+  "width": 248,
+  "height": 256
+ },
+ "b7a": {
+  "file": "b7a.png",
+  "thumb": "thumb/b7a.png",
+  "width": 248,
+  "height": 256
+ },
+ "b7l": {
+  "file": "b7l.png",
+  "thumb": "thumb/b7l.png",
+  "width": 248,
+  "height": 256
+ },
+ "b8": {
+  "file": "b8.png",
+  "thumb": "thumb/b8.png",
+  "width": 248,
+  "height": 256
+ },
+ "b8a": {
+  "file": "b8a.png",
+  "thumb": "thumb/b8a.png",
+  "width": 248,
+  "height": 256
+ },
+ "b8l": {
+  "file": "b8l.png",
+  "thumb": "thumb/b8l.png",
+  "width": 248,
+  "height": 256
+ },
+ "b9": {
+  "file": "b9.png",
+  "thumb": "thumb/b9.png",
+  "width": 248,
+  "height": 256
+ },
+ "b9a": {
+  "file": "b9a.png",
+  "thumb": "thumb/b9a.png",
+  "width": 248,
+  "height": 256
+ },
+ "b9l": {
+  "file": "b9l.png",
+  "thumb": "thumb/b9l.png",
+  "width": 248,
+  "height": 256
+ },
+ "b10": {
+  "file": "b10.png",
+  "thumb": "thumb/b10.png",
+  "width": 192,
+  "height": 40
+ },
+ "b11": {
+  "file": "b11.png",
+  "thumb": "thumb/b11.png",
+  "width": 68,
+  "height": 64
+ },
+ "b11a": {
+  "file": "b11a.png",
+  "thumb": "thumb/b11a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b12": {
+  "file": "b12.png",
+  "thumb": "thumb/b12.png",
+  "width": 68,
+  "height": 64
+ },
+ "b12a": {
+  "file": "b12a.png",
+  "thumb": "thumb/b12a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b13": {
+  "file": "b13.png",
+  "thumb": "thumb/b13.png",
+  "width": 68,
+  "height": 64
+ },
+ "b13a": {
+  "file": "b13a.png",
+  "thumb": "thumb/b13a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b14": {
+  "file": "b14.png",
+  "thumb": "thumb/b14.png",
+  "width": 68,
+  "height": 64
+ },
+ "b14a": {
+  "file": "b14a.png",
+  "thumb": "thumb/b14a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b15": {
+  "file": "b15.png",
+  "thumb": "thumb/b15.png",
+  "width": 68,
+  "height": 64
+ },
+ "b15a": {
+  "file": "b15a.png",
+  "thumb": "thumb/b15a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b16": {
+  "file": "b16.png",
+  "thumb": "thumb/b16.png",
+  "width": 68,
+  "height": 64
+ },
+ "b16a": {
+  "file": "b16a.png",
+  "thumb": "thumb/b16a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b17": {
+  "file": "b17.png",
+  "thumb": "thumb/b17.png",
+  "width": 68,
+  "height": 64
+ },
+ "b17a": {
+  "file": "b17a.png",
+  "thumb": "thumb/b17a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b18": {
+  "file": "b18.png",
+  "thumb": "thumb/b18.png",
+  "width": 68,
+  "height": 64
+ },
+ "b18a": {
+  "file": "b18a.png",
+  "thumb": "thumb/b18a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b19": {
+  "file": "b19.png",
+  "thumb": "thumb/b19.png",
+  "width": 68,
+  "height": 64
+ },
+ "b19a": {
+  "file": "b19a.png",
+  "thumb": "thumb/b19a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b20": {
+  "file": "b20.png",
+  "thumb": "thumb/b20.png",
+  "width": 68,
+  "height": 64
+ },
+ "b20a": {
+  "file": "b20a.png",
+  "thumb": "thumb/b20a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b21": {
+  "file": "b21.png",
+  "thumb": "thumb/b21.png",
+  "width": 68,
+  "height": 64
+ },
+ "b21a": {
+  "file": "b21a.png",
+  "thumb": "thumb/b21a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b22": {
+  "file": "b22.png",
+  "thumb": "thumb/b22.png",
+  "width": 68,
+  "height": 64
+ },
+ "b22a": {
+  "file": "b22a.png",
+  "thumb": "thumb/b22a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b23": {
+  "file": "b23.png",
+  "thumb": "thumb/b23.png",
+  "width": 68,
+  "height": 64
+ },
+ "b23a": {
+  "file": "b23a.png",
+  "thumb": "thumb/b23a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b24": {
+  "file": "b24.png",
+  "thumb": "thumb/b24.png",
+  "width": 68,
+  "height": 64
+ },
+ "b24a": {
+  "file": "b24a.png",
+  "thumb": "thumb/b24a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b25": {
+  "file": "b25.png",
+  "thumb": "thumb/b25.png",
+  "width": 68,
+  "height": 64
+ },
+ "b25a": {
+  "file": "b25a.png",
+  "thumb": "thumb/b25a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b26": {
+  "file": "b26.png",
+  "thumb": "thumb/b26.png",
+  "width": 68,
+  "height": 64
+ },
+ "b26a": {
+  "file": "b26a.png",
+  "thumb": "thumb/b26a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b27": {
+  "file": "b27.png",
+  "thumb": "thumb/b27.png",
+  "width": 68,
+  "height": 64
+ },
+ "b27a": {
+  "file": "b27a.png",
+  "thumb": "thumb/b27a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b28": {
+  "file": "b28.png",
+  "thumb": "thumb/b28.png",
+  "width": 68,
+  "height": 64
+ },
+ "b28a": {
+  "file": "b28a.png",
+  "thumb": "thumb/b28a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b29": {
+  "file": "b29.png",
+  "thumb": "thumb/b29.png",
+  "width": 68,
+  "height": 64
+ },
+ "b29a": {
+  "file": "b29a.png",
+  "thumb": "thumb/b29a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b30": {
+  "file": "b30.png",
+  "thumb": "thumb/b30.png",
+  "width": 68,
+  "height": 64
+ },
+ "b30a": {
+  "file": "b30a.png",
+  "thumb": "thumb/b30a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b31": {
+  "file": "b31.png",
+  "thumb": "thumb/b31.png",
+  "width": 68,
+  "height": 64
+ },
+ "b31a": {
+  "file": "b31a.png",
+  "thumb": "thumb/b31a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b32": {
+  "file": "b32.png",
+  "thumb": "thumb/b32.png",
+  "width": 68,
+  "height": 64
+ },
+ "b32a": {
+  "file": "b32a.png",
+  "thumb": "thumb/b32a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b33": {
+  "file": "b33.png",
+  "thumb": "thumb/b33.png",
+  "width": 68,
+  "height": 64
+ },
+ "b33a": {
+  "file": "b33a.png",
+  "thumb": "thumb/b33a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b34": {
+  "file": "b34.png",
+  "thumb": "thumb/b34.png",
+  "width": 68,
+  "height": 64
+ },
+ "b34a": {
+  "file": "b34a.png",
+  "thumb": "thumb/b34a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b35": {
+  "file": "b35.png",
+  "thumb": "thumb/b35.png",
+  "width": 68,
+  "height": 64
+ },
+ "b35a": {
+  "file": "b35a.png",
+  "thumb": "thumb/b35a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b36": {
+  "file": "b36.png",
+  "thumb": "thumb/b36.png",
+  "width": 68,
+  "height": 64
+ },
+ "b36a": {
+  "file": "b36a.png",
+  "thumb": "thumb/b36a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b37": {
+  "file": "b37.png",
+  "thumb": "thumb/b37.png",
+  "width": 68,
+  "height": 64
+ },
+ "b37a": {
+  "file": "b37a.png",
+  "thumb": "thumb/b37a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b38": {
+  "file": "b38.png",
+  "thumb": "thumb/b38.png",
+  "width": 68,
+  "height": 64
+ },
+ "b38a": {
+  "file": "b38a.png",
+  "thumb": "thumb/b38a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b39": {
+  "file": "b39.png",
+  "thumb": "thumb/b39.png",
+  "width": 68,
+  "height": 64
+ },
+ "b39a": {
+  "file": "b39a.png",
+  "thumb": "thumb/b39a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b40": {
+  "file": "b40.png",
+  "thumb": "thumb/b40.png",
+  "width": 68,
+  "height": 64
+ },
+ "b40a": {
+  "file": "b40a.png",
+  "thumb": "thumb/b40a.png",
+  "width": 68,
+  "height": 64
+ },
+ "b41": {
+  "file": "b41.png",
+  "thumb": "thumb/b41.png",
+  "width": 128,
+  "height": 36
+ },
+ "b42": {
+  "file": "b42.png",
+  "thumb": "thumb/b42.png",
+  "width": 160,
+  "height": 48
+ },
+ "b43": {
+  "file": "b43.png",
+  "thumb": "thumb/b43.png",
+  "width": 160,
+  "height": 48
+ },
+ "b44": {
+  "file": "b44.png",
+  "thumb": "thumb/b44.png",
+  "width": 160,
+  "height": 44
+ },
+ "b45": {
+  "file": "b45.png",
+  "thumb": "thumb/b45.png",
+  "width": 160,
+  "height": 44
+ },
+ "b46": {
+  "file": "b46.png",
+  "thumb": "thumb/b46.png",
+  "width": 208,
+  "height": 48
+ },
+ "b47": {
+  "file": "b47.png",
+  "thumb": "thumb/b47.png",
+  "width": 152,
+  "height": 48
+ },
+ "b48": {
+  "file": "b48.png",
+  "thumb": "thumb/b48.png",
+  "width": 152,
+  "height": 48
+ },
+ "b49": {
+  "file": "b49.png",
+  "thumb": "thumb/b49.png",
+  "width": 200,
+  "height": 88
+ },
+ "b49a": {
+  "file": "b49a.png",
+  "thumb": "thumb/b49a.png",
+  "width": 200,
+  "height": 88
+ },
+ "b50": {
+  "file": "b50.png",
+  "thumb": "thumb/b50.png",
+  "width": 200,
+  "height": 88
+ },
+ "b50a": {
+  "file": "b50a.png",
+  "thumb": "thumb/b50a.png",
+  "width": 200,
+  "height": 88
+ },
+ "b51": {
+  "file": "b51.png",
+  "thumb": "thumb/b51.png",
+  "width": 200,
+  "height": 88
+ },
+ "b51a": {
+  "file": "b51a.png",
+  "thumb": "thumb/b51a.png",
+  "width": 200,
+  "height": 88
+ },
+ "b52": {
+  "file": "b52.png",
+  "thumb": "thumb/b52.png",
+  "width": 168,
+  "height": 48
+ },
+ "b52a": {
+  "file": "b52a.png",
+  "thumb": "thumb/b52a.png",
+  "width": 168,
+  "height": 48
+ },
+ "b53": {
+  "file": "b53.png",
+  "thumb": "thumb/b53.png",
+  "width": 168,
+  "height": 48
+ },
+ "b53a": {
+  "file": "b53a.png",
+  "thumb": "thumb/b53a.png",
+  "width": 168,
+  "height": 48
+ },
+ "b54": {
+  "file": "b54.png",
+  "thumb": "thumb/b54.png",
+  "width": 260,
+  "height": 56
+ },
+ "b55": {
+  "file": "b55.png",
+  "thumb": "thumb/b55.png",
+  "width": 128,
+  "height": 36
+ },
+ "b56": {
+  "file": "b56.png",
+  "thumb": "thumb/b56.png",
+  "width": 104,
+  "height": 36
+ },
+ "b57": {
+  "file": "b57.png",
+  "thumb": "thumb/b57.png",
+  "width": 216,
+  "height": 52
+ },
+ "b58": {
+  "file": "b58.png",
+  "thumb": "thumb/b58.png",
+  "width": 216,
+  "height": 52
+ },
+ "ov_clear1": {
+  "file": "ov_clear1.png",
+  "thumb": "thumb/ov_clear1.png",
+  "width": 960,
+  "height": 540
+ },
+ "ov_clear2": {
+  "file": "ov_clear2.png",
+  "thumb": "thumb/ov_clear2.png",
+  "width": 960,
+  "height": 540
+ },
+ "ov_clear3": {
+  "file": "ov_clear3.png",
+  "thumb": "thumb/ov_clear3.png",
+  "width": 960,
+  "height": 540
+ },
+ "ov_c3": {
+  "file": "ov_c3.png",
+  "thumb": "thumb/ov_c3.png",
+  "width": 960,
+  "height": 540
+ },
+ "ov_c2": {
+  "file": "ov_c2.png",
+  "thumb": "thumb/ov_c2.png",
+  "width": 960,
+  "height": 540
+ },
+ "ov_c1": {
+  "file": "ov_c1.png",
+  "thumb": "thumb/ov_c1.png",
+  "width": 960,
+  "height": 540
+ },
+ "ov_cGO": {
+  "file": "ov_cGO.png",
+  "thumb": "thumb/ov_cGO.png",
+  "width": 960,
+  "height": 540
+ },
+ "ov_r_p1": {
+  "file": "ov_r_p1.png",
+  "thumb": "thumb/ov_r_p1.png",
+  "width": 960,
+  "height": 540
+ },
+ "ov_r_p2": {
+  "file": "ov_r_p2.png",
+  "thumb": "thumb/ov_r_p2.png",
+  "width": 960,
+  "height": 540
+ },
+ "ov_r_you": {
+  "file": "ov_r_you.png",
+  "thumb": "thumb/ov_r_you.png",
+  "width": 960,
+  "height": 540
+ },
+ "ov_r_ai": {
+  "file": "ov_r_ai.png",
+  "thumb": "thumb/ov_r_ai.png",
+  "width": 960,
+  "height": 540
+ },
+ "ov_m_p1": {
+  "file": "ov_m_p1.png",
+  "thumb": "thumb/ov_m_p1.png",
+  "width": 960,
+  "height": 540
+ },
+ "ov_m_p2": {
+  "file": "ov_m_p2.png",
+  "thumb": "thumb/ov_m_p2.png",
+  "width": 960,
+  "height": 540
+ },
+ "ov_m_win": {
+  "file": "ov_m_win.png",
+  "thumb": "thumb/ov_m_win.png",
+  "width": 960,
+  "height": 540
+ },
+ "ov_m_lose": {
+  "file": "ov_m_lose.png",
+  "thumb": "thumb/ov_m_lose.png",
+  "width": 960,
+  "height": 540
+ }
+}

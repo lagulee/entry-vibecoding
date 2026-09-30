@@ -2,14 +2,19 @@
   "name": "entry-vibecoding",
   "version": "1.0.0",
   "private": true,
-  "description": "엔트리(Entry) 작품을 코드로 설계·생성·검증하는 바이브 코딩 도구 — GRAVITY LAB 중력 시뮬레이터",
+  "description": "엔트리(Entry) 작품을 코드로 설계·생성·검증하는 바이브 코딩 도구 — GRAVITY LAB 중력 시뮬레이터 · LIGHTS OUT 퍼즐 대전",
   "scripts": {
     "art": "node tools/gl_art.js assets",
     "build": "GL_BLOCK_DOC=docs/BLOCKS.md node tools/build_gravity_lab.js assets dist/GRAVITY_LAB.ent",
     "test:ref": "node tools/test/reference_selftest.js",
     "test:setup": "bash tools/test/harness/setup.sh",
     "test:entry": "node tools/test/harness/run.js dist/GRAVITY_LAB.ent tools/test/harness/suite.js",
-    "test:perf": "node tools/test/harness/run.js dist/GRAVITY_LAB.ent tools/test/harness/perf.js"
+    "test:perf": "node tools/test/harness/run.js dist/GRAVITY_LAB.ent tools/test/harness/perf.js",
+    "lo:art": "node tools/lo_art.js assets/lights_out",
+    "lo:sound": "node tools/lo_sound.js assets/lights_out/sound",
+    "lo:build": "LO_BLOCK_DOC=docs/LIGHTS_OUT_BLOCKS.md node tools/build_lights_out.js assets/lights_out dist/LIGHTS_OUT.ent",
+    "lo:test:solver": "node tools/test/lo_solver_selftest.js",
+    "lo:test": "node tools/test/harness/run.js dist/LIGHTS_OUT.ent tools/test/harness/lo_suite.js"
   },
   "devDependencies": {
     "@entrylabs/entry": "4.0.23",
@@ -18,6 +23,7 @@
     "@fontsource/jetbrains-mono": "^5.3.0",
     "@fontsource/noto-sans-kr": "^5.3.0",
     "@fontsource/space-grotesk": "^5.3.0",
+    "lamejs": "1.2.1",
     "lodash": "4.17.21",
     "playwright-core": "1.63.0"
   }

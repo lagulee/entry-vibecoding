@@ -1,0 +1,42 @@
+{
+ "tick": {
+  "file": "tick.mp3",
+  "duration": 0.1
+ },
+ "aitick": {
+  "file": "aitick.mp3",
+  "duration": 0.1
+ },
+ "btn": {
+  "file": "btn.mp3",
+  "duration": 0.1
+ },
+ "hint": {
+  "file": "hint.mp3",
+  "duration": 0.5
+ },
+ "clear": {
+  "file": "clear.mp3",
+  "duration": 1
+ },
+ "beep": {
+  "file": "beep.mp3",
+  "duration": 0.2
+ },
+ "go": {
+  "file": "go.mp3",
+  "duration": 0.5
+ },
+ "round": {
+  "file": "round.mp3",
+  "duration": 0.6
+ },
+ "win": {
+  "file": "win.mp3",
+  "duration": 1.4
+ },
+ "lose": {
+  "file": "lose.mp3",
+  "duration": 1
+ }
+}

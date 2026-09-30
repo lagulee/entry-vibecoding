@@ -8,7 +8,7 @@
  */
 const TPL = require('./entry_block_templates.ko.json');
 
-const KEY_NAMES = { 32: '스페이스', 78: 'n', 82: 'r', 13: '엔터' };
+const KEY_NAMES = { 32: '스페이스', 78: 'n', 82: 'r', 13: '엔터', 27: 'Esc', 37: '왼쪽 화살표', 38: '위쪽 화살표', 39: '오른쪽 화살표', 40: '아래쪽 화살표', 65: 'a', 68: 'd', 72: 'h', 83: 's', 87: 'w' };
 
 function makeRenderer(project, meta) {
     const names = {};

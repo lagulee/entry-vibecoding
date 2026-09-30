@@ -1571,5 +1571,136 @@
     "options": null
    }
   ]
+ },
+ "calc_rand": {
+  "template": "%1 %2 %3 %4 %5",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "Text",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "부터",
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "사이의 무작위 수",
+    "options": null
+   }
+  ]
+ },
+ "char_at": {
+  "template": "%1 %2 %3 %4 %5",
+  "skeleton": "basic_string_field",
+  "params": [
+   {
+    "type": "Text",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "의",
+    "options": null
+   },
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Text",
+    "text": "번째 글자",
+    "options": null
+   }
+  ]
+ },
+ "sound_something_with_block": {
+  "template": "소리 %1 재생하기 %2",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "wait_second": {
+  "template": "%1 초 기다리기 %2",
+  "skeleton": "basic",
+  "params": [
+   {
+    "type": "Block",
+    "text": null,
+    "options": null
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
+ },
+ "stop_object": {
+  "template": "%1 코드 멈추기 %2",
+  "skeleton": "basic_without_next",
+  "params": [
+   {
+    "type": "Dropdown",
+    "text": null,
+    "options": [
+     [
+      "모든",
+      "all"
+     ],
+     [
+      "자신의",
+      "thisOnly"
+     ],
+     [
+      "이",
+      "thisThread"
+     ],
+     [
+      "자신의 다른",
+      "otherThread"
+     ],
+     [
+      "다른 오브젝트의",
+      "other_objects"
+     ]
+    ]
+   },
+   {
+    "type": "Indicator",
+    "text": null,
+    "options": null
+   }
+  ]
  }
 }
