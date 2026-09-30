@@ -15,7 +15,7 @@ const WORK = path.join(__dirname, '.work');
 
 function serve() {
     const types = { '.js': 'application/javascript', '.css': 'text/css', '.html': 'text/html', '.svg': 'image/svg+xml',
-        '.png': 'image/png', '.json': 'application/json', '.wasm': 'application/wasm', '.woff2': 'font/woff2' };
+        '.png': 'image/png', '.mp3': 'audio/mpeg', '.json': 'application/json', '.wasm': 'application/wasm', '.woff2': 'font/woff2' };
     const server = http.createServer((q, s) => {
         const f = path.join(ROOT, decodeURIComponent(q.url.split('?')[0]));
         if (!f.startsWith(ROOT) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) {
@@ -46,6 +46,11 @@ function serve() {
         for (const p of o.sprite.pictures || []) {
             p.fileurl = rel + p.fileurl;
             p.thumbUrl = rel + p.thumbUrl;
+        }
+        for (const snd of o.sprite.sounds || []) {
+            if (snd.fileurl && snd.fileurl.startsWith('temp/')) {
+                snd.fileurl = rel + snd.fileurl;
+            }
         }
     }
     const server = await serve();

@@ -1,0 +1,327 @@
+{
+ "screen_title": {
+  "file": "screen_title.png",
+  "width": 960,
+  "height": 540
+ },
+ "screen_setup": {
+  "file": "screen_setup.png",
+  "width": 960,
+  "height": 540
+ },
+ "screen_help": {
+  "file": "screen_help.png",
+  "width": 960,
+  "height": 540
+ },
+ "game_bg": {
+  "file": "game_bg.png",
+  "width": 960,
+  "height": 540
+ },
+ "board5": {
+  "file": "board5.png",
+  "width": 760,
+  "height": 500
+ },
+ "board7": {
+  "file": "board7.png",
+  "width": 760,
+  "height": 500
+ },
+ "board9": {
+  "file": "board9.png",
+  "width": 760,
+  "height": 500
+ },
+ "stone_red": {
+  "file": "stone_red.png",
+  "width": 100,
+  "height": 100
+ },
+ "stone_blue": {
+  "file": "stone_blue.png",
+  "width": 100,
+  "height": 100
+ },
+ "stone_red_win": {
+  "file": "stone_red_win.png",
+  "width": 100,
+  "height": 100
+ },
+ "stone_blue_win": {
+  "file": "stone_blue_win.png",
+  "width": 100,
+  "height": 100
+ },
+ "hover_red": {
+  "file": "hover_red.png",
+  "width": 100,
+  "height": 100
+ },
+ "hover_blue": {
+  "file": "hover_blue.png",
+  "width": 100,
+  "height": 100
+ },
+ "marker": {
+  "file": "marker.png",
+  "width": 100,
+  "height": 100
+ },
+ "hint": {
+  "file": "hint.png",
+  "width": 100,
+  "height": 100
+ },
+ "turn_red": {
+  "file": "turn_red.png",
+  "width": 200,
+  "height": 60
+ },
+ "turn_blue": {
+  "file": "turn_blue.png",
+  "width": 200,
+  "height": 60
+ },
+ "turn_red_win": {
+  "file": "turn_red_win.png",
+  "width": 200,
+  "height": 60
+ },
+ "turn_blue_win": {
+  "file": "turn_blue_win.png",
+  "width": 200,
+  "height": 60
+ },
+ "banner_red": {
+  "file": "banner_red.png",
+  "width": 480,
+  "height": 168
+ },
+ "banner_blue": {
+  "file": "banner_blue.png",
+  "width": 480,
+  "height": 168
+ },
+ "banner_you": {
+  "file": "banner_you.png",
+  "width": 480,
+  "height": 168
+ },
+ "banner_ai": {
+  "file": "banner_ai.png",
+  "width": 480,
+  "height": 168
+ },
+ "conf1": {
+  "file": "conf1.png",
+  "width": 20,
+  "height": 20
+ },
+ "conf2": {
+  "file": "conf2.png",
+  "width": 20,
+  "height": 20
+ },
+ "conf3": {
+  "file": "conf3.png",
+  "width": 20,
+  "height": 20
+ },
+ "conf4": {
+  "file": "conf4.png",
+  "width": 20,
+  "height": 20
+ },
+ "conf5": {
+  "file": "conf5.png",
+  "width": 20,
+  "height": 20
+ },
+ "conf6": {
+  "file": "conf6.png",
+  "width": 20,
+  "height": 20
+ },
+ "conf7": {
+  "file": "conf7.png",
+  "width": 20,
+  "height": 20
+ },
+ "conf8": {
+  "file": "conf8.png",
+  "width": 20,
+  "height": 20
+ },
+ "conf9": {
+  "file": "conf9.png",
+  "width": 20,
+  "height": 20
+ },
+ "conf10": {
+  "file": "conf10.png",
+  "width": 20,
+  "height": 20
+ },
+ "spinner": {
+  "file": "spinner.png",
+  "width": 32,
+  "height": 32
+ },
+ "logo_mark": {
+  "file": "logo_mark.png",
+  "width": 128,
+  "height": 128
+ },
+ "b1": {
+  "file": "b1.png",
+  "width": 280,
+  "height": 60
+ },
+ "b2": {
+  "file": "b2.png",
+  "width": 168,
+  "height": 44
+ },
+ "b4": {
+  "file": "b4.png",
+  "width": 168,
+  "height": 44
+ },
+ "b3": {
+  "file": "b3.png",
+  "width": 220,
+  "height": 44
+ },
+ "b10": {
+  "file": "b10.png",
+  "width": 184,
+  "height": 48
+ },
+ "b10a": {
+  "file": "b10a.png",
+  "width": 184,
+  "height": 48
+ },
+ "b11": {
+  "file": "b11.png",
+  "width": 184,
+  "height": 48
+ },
+ "b11a": {
+  "file": "b11a.png",
+  "width": 184,
+  "height": 48
+ },
+ "b12": {
+  "file": "b12.png",
+  "width": 120,
+  "height": 48
+ },
+ "b12a": {
+  "file": "b12a.png",
+  "width": 120,
+  "height": 48
+ },
+ "b13": {
+  "file": "b13.png",
+  "width": 120,
+  "height": 48
+ },
+ "b13a": {
+  "file": "b13a.png",
+  "width": 120,
+  "height": 48
+ },
+ "b14": {
+  "file": "b14.png",
+  "width": 120,
+  "height": 48
+ },
+ "b14a": {
+  "file": "b14a.png",
+  "width": 120,
+  "height": 48
+ },
+ "b15": {
+  "file": "b15.png",
+  "width": 120,
+  "height": 48
+ },
+ "b15a": {
+  "file": "b15a.png",
+  "width": 120,
+  "height": 48
+ },
+ "b16": {
+  "file": "b16.png",
+  "width": 120,
+  "height": 48
+ },
+ "b16a": {
+  "file": "b16a.png",
+  "width": 120,
+  "height": 48
+ },
+ "b17": {
+  "file": "b17.png",
+  "width": 120,
+  "height": 48
+ },
+ "b17a": {
+  "file": "b17a.png",
+  "width": 120,
+  "height": 48
+ },
+ "b18": {
+  "file": "b18.png",
+  "width": 184,
+  "height": 48
+ },
+ "b18a": {
+  "file": "b18a.png",
+  "width": 184,
+  "height": 48
+ },
+ "b19": {
+  "file": "b19.png",
+  "width": 184,
+  "height": 48
+ },
+ "b19a": {
+  "file": "b19a.png",
+  "width": 184,
+  "height": 48
+ },
+ "b20": {
+  "file": "b20.png",
+  "width": 260,
+  "height": 56
+ },
+ "b21": {
+  "file": "b21.png",
+  "width": 160,
+  "height": 48
+ },
+ "b30": {
+  "file": "b30.png",
+  "width": 98,
+  "height": 40
+ },
+ "b33": {
+  "file": "b33.png",
+  "width": 98,
+  "height": 40
+ },
+ "b31": {
+  "file": "b31.png",
+  "width": 200,
+  "height": 40
+ },
+ "b32": {
+  "file": "b32.png",
+  "width": 200,
+  "height": 40
+ }
+}

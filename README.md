@@ -2,6 +2,28 @@
 
 엔트리(Entry) 작품을 **코드로 설계하고, `.ent` 파일로 만들고, 실제 엔트리 엔진에서 자동으로 검증**하는 바이브 코딩 저장소입니다.
 
+## HEX — AI와 두는 육각형 연결 전략 게임 (NEW)
+
+> 빨강은 왼쪽↔오른쪽, 파랑은 위↔아래. **먼저 이으면 이긴다.** 무승부 없는 헥스 보드게임.
+> 미완성이던 4×4 헥스 작품(`hex.ent`)을 완전히 새로 만든 업그레이드 버전입니다.
+
+| 타이틀 | AI 대전 · 힌트 | 승리 길 표시 |
+|---|---|---|
+| ![](docs/images/hex_title.png) | ![](docs/images/hex_game_hint.png) | ![](docs/images/hex_win.png) |
+
+1. [`dist/HEX.ent`](dist/HEX.ent) 를 내려받아 playentry.org → 작품 만들기 → 파일 → **오프라인 작품 불러오기**
+2. ▶ 시작하기 → **게임 시작** → 대전 방식 · AI 난이도 · 보드 크기 · 내 색 고르고 **대국 시작**
+
+- **AI 대전** 쉬움 · 보통 · 어려움 (거리 지도 + 브리지 + 1수 탐색 AI, 기준 JS 구현과 같은 수를 두는지 실제 엔진에서 검증)
+- **2인 대전**, 보드 **5×5 · 7×7 · 9×9**, **무르기**, **힌트**, 이긴 길 반짝임, 효과음, 게임 방법 화면
+- 원본 분석 · AI 설계 · 검증 결과: **[docs/HEX.md](docs/HEX.md)** · 전체 블록: **[docs/HEX_BLOCKS.md](docs/HEX_BLOCKS.md)**
+
+```bash
+npm run hex:build       # assets/hex → dist/HEX.ent
+npm run hex:test:ai     # AI 알고리즘 검증 · 난이도별 대국
+npm run hex:test:entry  # 실제 entryjs 엔진 테스트 (npm run test:setup 먼저)
+```
+
 ## GRAVITY LAB — 인터랙티브 중력 시뮬레이터
 
 > "중력은 천체의 움직임을 어떻게 바꿀까?"

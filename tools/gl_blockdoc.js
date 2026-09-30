@@ -145,12 +145,12 @@ function makeRenderer(project, meta) {
     return { thread, funcTitle };
 }
 
-function renderProjectDoc(project, meta) {
+function renderProjectDoc(project, meta, title = 'GRAVITY LAB', builder = 'tools/build_gravity_lab.js') {
     const R = makeRenderer(project, meta);
     const out = [];
-    out.push('# GRAVITY LAB — 전체 블록 목록 (자동 생성)');
+    out.push(`# ${title} — 전체 블록 목록 (자동 생성)`);
     out.push('');
-    out.push('`tools/build_gravity_lab.js` 가 만든 작품의 모든 스크립트를 엔트리 블록 문구로 옮긴 것입니다.');
+    out.push(`\`${builder}\` 가 만든 작품의 모든 스크립트를 엔트리 블록 문구로 옮긴 것입니다.`);
     out.push('표기: `[명령 블록]` · `(값 블록)` · `<판단 블록>` · 들여쓰기 = 블록 안쪽에 끼워 넣기, `[아니면]` = 만약-아니면 블록의 아래칸.');
     out.push('');
     out.push('## 오브젝트별 스크립트');

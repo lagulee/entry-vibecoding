@@ -2,8 +2,12 @@
   "name": "entry-vibecoding",
   "version": "1.0.0",
   "private": true,
-  "description": "엔트리(Entry) 작품을 코드로 설계·생성·검증하는 바이브 코딩 도구 — GRAVITY LAB 중력 시뮬레이터",
+  "description": "엔트리(Entry) 작품을 코드로 설계·생성·검증하는 바이브 코딩 도구 — HEX 헥스 보드게임 · GRAVITY LAB 중력 시뮬레이터",
   "scripts": {
+    "hex:art": "node tools/hex_art.js assets/hex && node tools/hex_sound.js assets/hex",
+    "hex:build": "HEX_BLOCK_DOC=docs/HEX_BLOCKS.md node tools/build_hex.js assets/hex dist/HEX.ent",
+    "hex:test:ai": "node tools/test/hex_canon_check.js && node tools/test/hex_tournament.js 20",
+    "hex:test:entry": "node tools/test/harness/run.js dist/HEX.ent tools/test/harness/hex_suite.js",
     "art": "node tools/gl_art.js assets",
     "build": "GL_BLOCK_DOC=docs/BLOCKS.md node tools/build_gravity_lab.js assets dist/GRAVITY_LAB.ent",
     "test:ref": "node tools/test/reference_selftest.js",
@@ -18,6 +22,7 @@
     "@fontsource/jetbrains-mono": "^5.3.0",
     "@fontsource/noto-sans-kr": "^5.3.0",
     "@fontsource/space-grotesk": "^5.3.0",
+    "lamejs": "^1.2.1",
     "lodash": "4.17.21",
     "playwright-core": "1.63.0"
   }

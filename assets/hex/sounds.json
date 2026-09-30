@@ -1,0 +1,30 @@
+{
+ "place": {
+  "file": "place.mp3",
+  "duration": 0.2
+ },
+ "place2": {
+  "file": "place2.mp3",
+  "duration": 0.2
+ },
+ "click": {
+  "file": "click.mp3",
+  "duration": 0.1
+ },
+ "undo": {
+  "file": "undo.mp3",
+  "duration": 0.2
+ },
+ "win": {
+  "file": "win.mp3",
+  "duration": 1.5
+ },
+ "lose": {
+  "file": "lose.mp3",
+  "duration": 1.4
+ },
+ "start": {
+  "file": "start.mp3",
+  "duration": 0.6
+ }
+}
