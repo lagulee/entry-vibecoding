@@ -972,7 +972,8 @@ for (const o of project.objects) {
     for (const p of o.sprite.pictures) {
         const src = path.join(assetDir, p._file);
         if (!fileIds[p._file]) {
-            fileIds[p._file] = crypto.createHash('md5').update(`hex/${p._file}`).digest('hex');
+            // 그림 내용으로 ID 를 만든다 → 그림이 바뀌면 ID 도 바뀌어 엔트리가 옛 그림을 다시 쓰지 않는다
+            fileIds[p._file] = crypto.createHash('md5').update(fs.readFileSync(src)).digest('hex');
         }
         const id = fileIds[p._file];
         const sub2 = path.join(id.slice(0, 2), id.slice(2, 4));
@@ -989,7 +990,7 @@ for (const o of project.objects) {
 }
 for (const o of project.objects) {
     for (const snd of o.sprite.sounds || []) {
-        const id = crypto.createHash('md5').update(`hex/${snd._file}`).digest('hex');
+        const id = crypto.createHash('md5').update(fs.readFileSync(path.join(assetDir, snd._file))).digest('hex');
         const d = path.join(tempDir, id.slice(0, 2), id.slice(2, 4), 'sound');
         fs.mkdirSync(d, { recursive: true });
         fs.copyFileSync(path.join(assetDir, snd._file), path.join(d, `${id}.mp3`));

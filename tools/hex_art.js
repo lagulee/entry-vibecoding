@@ -294,7 +294,6 @@ ${bgHex}
 <div style="position:absolute;left:278px;top:44px;width:190px;text-align:center;font-family:'JUA'">
   <div style="font-size:15px;color:${P.ink};letter-spacing:6px;opacity:.7">HEX</div>
   <div style="font-size:60px;line-height:1;color:${P.ink};margin-top:-2px"><span style="color:${P.red}">헥</span><span style="color:${P.blue}">스</span></div>
-  <div style="font-size:10.5px;color:${P.ink};margin-top:12px">먼저 잇는 쪽이 이긴다!</div>
 </div>
 </div>`;
 }
