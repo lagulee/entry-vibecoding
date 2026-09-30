@@ -9,7 +9,7 @@
 | **AI 대전 (쉬움, 4×4)** | **2인 대전 (5×5)** |
 | ![](images/lo_10_race_both.png) | ![](images/lo_11_pvp_playing.png) |
 
-완성 파일: [`dist/LIGHTS_OUT.ent`](../dist/LIGHTS_OUT.ent) · 전체 블록: [LIGHTS_OUT_BLOCKS.md](LIGHTS_OUT_BLOCKS.md)
+완성 파일: [`dist/LIGHTS_OUT.ent`](../dist/LIGHTS_OUT.ent) · 전체 블록: [LIGHTS_OUT_BLOCKS.md](LIGHTS_OUT_BLOCKS.md) · 공유용 작품 설명: [LIGHTS_OUT_DESCRIPTION.md](LIGHTS_OUT_DESCRIPTION.md)
 
 ---
 
