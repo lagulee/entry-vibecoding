@@ -37,6 +37,8 @@ function fontFaces() {
         f('KR', 'noto-sans-kr-korean-700-normal.woff2', 700),
         f('KR', 'noto-sans-kr-korean-900-normal.woff2', 900),
         f('KRL', 'noto-sans-kr-latin-700-normal.woff2', 700),
+        f('JUA', 'jua-korean-400-normal.woff2', 400),
+        f('JUA', 'jua-latin-400-normal.woff2', 400),
         f('KRL', 'noto-sans-kr-latin-900-normal.woff2', 900),
     ].join('\n');
 }
@@ -220,46 +222,87 @@ function logoMarkSVG(s) {
 }
 
 // ---------- 타이틀 ----------
+// 타이틀(= 작품 썸네일): 종이 위에 놓인 실제 보드게임 느낌. 광택·네온 없이 평면 색 + 굵은 외곽선
+const PAPER = { bg: '#f2e8d2', ink: '#2e2620', tile: '#fbf5e6', tileLine: '#2e2620', red: '#e2493f', redD: '#a8302a', blue: '#2f7fd1', blueD: '#1f5a98', tan: '#d9c9a6' };
 function titleHTML() {
-    // 가운데 엠블럼: 작은 5×5 보드에 빨강이 이어진 모습
-    const N = 5;
-    const w = 17;
+    const P = PAPER;
+    let sd = 11;
+    const rnd = () => ((sd = (sd * 16807) % 2147483647) / 2147483647);
+    // 종이 결 + 연한 육각 무늬
+    let bgHex = '';
+    const R0 = 15;
+    for (let row = -1; row < 13; row++) {
+        for (let col = -1; col < 20; col++) {
+            const cx = col * SQ3 * R0 + (row % 2 ? SQ3 * R0 / 2 : 0);
+            const cy = row * 1.5 * R0;
+            bgHex += `<polygon points="${ptsStr(hexPts(cx, cy, R0 - 1))}" fill="none" stroke="${P.tan}" stroke-width=".7" opacity="${(0.35 + rnd() * 0.3).toFixed(2)}"/>`;
+        }
+    }
+    // 보드 (6×6, 살짝 기울임)
+    const N = 6;
+    const w = 23.5;
     const R = w / SQ3;
-    const X = 240;
-    const Y = 78;
-    let s = '';
-    const red = new Set(['2,0', '2,1', '1,2', '1,3', '2,3', '2,4']);
-    const blue = new Set(['0,2', '1,1', '3,1', '3,2', '4,1']);
+    const X = 142;
+    const Y = 136;
+    const red = new Set(['3,0', '3,1', '2,2', '2,3', '3,3', '2,4', '1,5']);
+    const blue = new Set(['0,2', '1,1', '1,2', '4,1', '4,2', '5,0', '0,4']);
+    let tiles = '';
+    let edges = '';
+    let stones = '';
+    const E = [[-1, 1], [0, 1], [1, 0], [1, -1], [0, -1], [-1, 0]];
     for (let r = 0; r < N; r++) {
         for (let q = 0; q < N; q++) {
-            const x = X + (q - 2 + (r - 2) / 2) * w;
-            const y = Y + (r - 2) * 1.5 * R;
-            s += `<polygon points="${ptsStr(hexPts(x, y, R - 0.8))}" fill="url(#tt)" stroke="#3a4777" stroke-width=".6"/>`;
-            const k = `${r},${q}`;
-            if (red.has(k) || blue.has(k)) {
-                const col = red.has(k) ? [C.redL, C.red, C.redD] : [C.blueL, C.blue, C.blueD];
-                s += `<circle cx="${x}" cy="${y}" r="${R * 0.62}" fill="url(#${red.has(k) ? 'sr' : 'sb'})"/>`;
-                s += `<ellipse cx="${x - 1.4}" cy="${y - 2}" rx="${R * 0.25}" ry="${R * 0.14}" fill="#fff" opacity=".45"/>`;
-                void col;
+            const x = X + (q - (N - 1) / 2 + (r - (N - 1) / 2) / 2) * w;
+            const y = Y + (r - (N - 1) / 2) * 1.5 * R;
+            tiles += `<polygon points="${ptsStr(hexPts(x, y, R))}" fill="${P.tile}" stroke="${P.tileLine}" stroke-width="1.3" stroke-linejoin="round"/>`;
+            const pts = hexPts(x, y, R + 2.2);
+            E.forEach(([dr, dq], k) => {
+                const rr = r + dr;
+                const qq = q + dq;
+                if (rr >= 0 && rr < N && qq >= 0 && qq < N) {
+                    return;
+                }
+                const col = rr < 0 || rr >= N ? P.blue : P.red;
+                const [a, b2] = [pts[k], pts[(k + 1) % 6]];
+                edges += `<line x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b2[0].toFixed(1)}" y2="${b2[1].toFixed(1)}" stroke="${col}" stroke-width="5" stroke-linecap="round"/>`;
+            });
+            const key = `${r},${q}`;
+            if (red.has(key) || blue.has(key)) {
+                const c = red.has(key) ? [P.red, P.redD] : [P.blue, P.blueD];
+                // 손으로 놓은 듯 조금씩 어긋나게
+                const ox = (rnd() - 0.5) * 1.6;
+                const oy = (rnd() - 0.5) * 1.6;
+                stones += flatStone(x + ox, y + oy, R * 0.66, c[0], c[1]);
             }
         }
     }
-    return shell(`
+    // 판 밖에 굴러다니는 돌
+    stones += flatStone(30, 236, 9, P.red, P.redD) + flatStone(50, 249, 9, P.red, P.redD) + flatStone(262, 236, 9, P.blue, P.blueD);
+    const underline = 'M292 124 C 330 119, 380 127, 452 120';
+    return `<div style="width:480px;height:270px;position:relative;overflow:hidden;background:${P.bg}">
 <svg width="480" height="270" style="position:absolute;left:0;top:0"><defs>
-<linearGradient id="tt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${C.tileL}"/><stop offset="1" stop-color="${C.tile}"/></linearGradient>
-<radialGradient id="sr" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="${C.redL}"/><stop offset=".45" stop-color="${C.red}"/><stop offset="1" stop-color="${C.redD}"/></radialGradient>
-<radialGradient id="sb" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="${C.blueL}"/><stop offset=".45" stop-color="${C.blue}"/><stop offset="1" stop-color="${C.blueD}"/></radialGradient>
-<filter id="gl" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6"/></filter>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 .3  0 0 0 0 .25  0 0 0 0 .18  0 0 0 .09 0"/></filter>
 </defs>
-<ellipse cx="${X}" cy="${Y}" rx="90" ry="52" fill="#3b9dff" opacity=".12" filter="url(#gl)"/>
-${s}
+${bgHex}
+<rect width="480" height="270" filter="url(#grain)"/>
+<g transform="rotate(-6 ${X} ${Y})">
+  <g transform="translate(3 4)" opacity=".18">${tiles.replace(/fill="[^"]+"/g, `fill="${P.ink}"`)}</g>
+  ${edges}${tiles}${stones.replace(/translate\(0 0\)/g, '')}
+</g>
+<path d="${underline}" fill="none" stroke="${P.red}" stroke-width="3.2" stroke-linecap="round" opacity=".85"/>
 </svg>
-<div style="position:absolute;left:0;right:0;top:114px;text-align:center">
-  <div class="sg" style="font-size:52px;font-weight:700;letter-spacing:14px;line-height:1;padding-left:14px;
-   color:#fff;text-shadow:0 3px 0 rgba(0,0,0,.35),0 0 18px rgba(120,160,255,.55)"><span style="color:${C.red};text-shadow:0 0 16px ${C.red}aa,0 3px 0 ${C.redD}">H</span>E<span style="color:${C.blue};text-shadow:0 0 16px ${C.blue}aa,0 3px 0 ${C.blueD}">X</span></div>
-  <div style="font-size:9px;color:${C.text};font-weight:700;margin-top:3px;letter-spacing:1.5px">먼저 잇는 쪽이 이긴다 · 육각형 연결 전략 게임</div>
+<div style="position:absolute;left:278px;top:44px;width:190px;text-align:center;font-family:'JUA'">
+  <div style="font-size:15px;color:${P.ink};letter-spacing:6px;opacity:.7">HEX</div>
+  <div style="font-size:60px;line-height:1;color:${P.ink};margin-top:-2px"><span style="color:${P.red}">헥</span><span style="color:${P.blue}">스</span></div>
+  <div style="font-size:10.5px;color:${P.ink};margin-top:12px">먼저 잇는 쪽이 이긴다!</div>
 </div>
-`);
+</div>`;
+}
+function flatStone(x, y, r, c, d) {
+    return `<circle cx="${x.toFixed(1)}" cy="${(y + 1.4).toFixed(1)}" r="${r.toFixed(1)}" fill="${PAPER.ink}" opacity=".25"/>
+<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="${c}" stroke="${PAPER.ink}" stroke-width="1.2"/>
+<path d="M ${(x - r * 0.55).toFixed(1)} ${(y - r * 0.15).toFixed(1)} A ${(r * 0.6).toFixed(1)} ${(r * 0.6).toFixed(1)} 0 0 1 ${(x + r * 0.1).toFixed(1)} ${(y - r * 0.6).toFixed(1)}" fill="none" stroke="#fff" stroke-width="${(r * 0.16).toFixed(2)}" stroke-linecap="round" opacity=".55"/>
+<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(r * 0.8).toFixed(1)}" fill="none" stroke="${d}" stroke-width="${(r * 0.12).toFixed(2)}" opacity=".35"/>`;
 }
 
 // ---------- 설정 ----------
@@ -370,6 +413,13 @@ function buttonHTML(b, state) {
     let shadow = '0 2px 4px rgba(0,0,0,.35)';
     let fs = Math.min(10.5, b.h * 0.42);
     let fw = 700;
+    if (b.screen === 'TITLE') {
+        // 타이틀 버튼: 종이 스티커 느낌 (평면 색 + 굵은 외곽선 + 딱딱한 그림자)
+        const P = PAPER;
+        const prim = b.kind === 'primary';
+        return `<div style="width:${b.w}px;height:${b.h}px;border-radius:${b.h / 2.4}px;background:${prim ? P.red : '#fffaf0'};border:1.6px solid ${P.ink};box-shadow:0 2.5px 0 ${P.ink};
+display:flex;align-items:center;justify-content:center;font-family:'JUA';font-size:${prim ? 14 : 10.5}px;color:${prim ? '#fff' : P.ink};white-space:nowrap;line-height:1;margin-top:-1px">${b.label}</div>`;
+    }
     if (b.kind === 'primary') {
         bg = 'linear-gradient(180deg,#ffdf7e,#ffbe3d)';
         bd = '#ffe7a3';

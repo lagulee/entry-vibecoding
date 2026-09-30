@@ -26,9 +26,9 @@ const PANEL = { x: 181, w: 108 };
  * kind: primary(강조) · option(선택형) · ghost(보조) · panel(게임 패널)
  */
 const BUTTONS = [
-    { id: 1, screen: 'TITLE', x: 0, y: -66, w: 140, h: 30, label: '게임 시작', kind: 'primary' },
-    { id: 2, screen: 'TITLE', x: -46, y: -99, w: 84, h: 22, label: '게임 방법', kind: 'ghost' },
-    { id: 4, screen: 'TITLE', x: 46, y: -99, w: 84, h: 22, label: '빠른 대국', kind: 'ghost' },
+    { id: 1, screen: 'TITLE', x: 132, y: -30, w: 124, h: 28, label: '게임 시작', kind: 'primary' },
+    { id: 2, screen: 'TITLE', x: 93, y: -66, w: 74, h: 22, label: '게임 방법', kind: 'ghost' },
+    { id: 4, screen: 'TITLE', x: 171, y: -66, w: 74, h: 22, label: '빠른 대국', kind: 'ghost' },
     { id: 3, screen: 'HELP', x: 0, y: -113, w: 110, h: 22, label: '알겠어요!', kind: 'primary' },
 
     { id: 10, screen: 'SETUP', x: 12, y: 62, w: 92, h: 24, label: 'AI 대전', kind: 'option', icon: 'ai' },
@@ -58,7 +58,7 @@ const TEXT = {
     score: { x: PANEL.x, y: -21, w: 100, h: 14 },
     moves: { x: PANEL.x, y: -36, w: 100, h: 11 },
     resultSub: { x: BOARD.x, y: -7, w: 220, h: 14 },
-    titleRecord: { x: 0, y: -122, w: 300, h: 12 },
+    titleRecord: { x: 132, y: -100, w: 200, h: 24 },
 };
 const TURN_CARD = { x: PANEL.x, y: 82, w: 100, h: 30 };
 const BANNER = { x: BOARD.x, y: 0, w: 240, h: 84 };

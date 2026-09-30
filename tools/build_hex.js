@@ -740,12 +740,12 @@ const BANNER_SIZE = (L.BANNER.w + L.BANNER.h) / 2;
 
 // 4) 타이틀 전적
 {
-    const o = textBox('타이틀전적', T.titleRecord, { fontSize: 7, font: 'Nanum Gothic', colour: '#aab6e0', align: 0 });
+    const o = textBox('타이틀전적', T.titleRecord, { fontSize: 7, font: 'Nanum Gothic', colour: '#6f604c', align: 0 });
     P.addThread(o, onStart(Forever([
         IfElse(eq(v('화면'), 'TITLE'), [
             If(eq(mod(v('프레임'), 15), 0), [
-                write(join('AI 전적  —  쉬움 ', item('AI승', 1), '승 ', item('AI패', 1), '패   보통 ', item('AI승', 2), '승 ', item('AI패', 2),
-                    '패   어려움 ', item('AI승', 3), '승 ', item('AI패', 3), '패')),
+                write(join('AI 전적  쉬움 ', item('AI승', 1), '승 ', item('AI패', 1), '패 · 보통 ', item('AI승', 2), '승 ', item('AI패', 2),
+                    '패', '\n', '어려움 ', item('AI승', 3), '승 ', item('AI패', 3), '패')),
             ]),
             show(),
         ], [hide()]),

@@ -176,17 +176,17 @@
  },
  "b1": {
   "file": "b1.png",
-  "width": 280,
-  "height": 60
+  "width": 248,
+  "height": 56
  },
  "b2": {
   "file": "b2.png",
-  "width": 168,
+  "width": 148,
   "height": 44
  },
  "b4": {
   "file": "b4.png",
-  "width": 168,
+  "width": 148,
   "height": 44
  },
  "b3": {

@@ -20,6 +20,7 @@
     "@entrylabs/legacy-video": "1.0.1",
     "@entrylabs/tool": "2.0.9",
     "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/jua": "^5.3.0",
     "@fontsource/noto-sans-kr": "^5.3.0",
     "@fontsource/space-grotesk": "^5.3.0",
     "lamejs": "^1.2.1",
