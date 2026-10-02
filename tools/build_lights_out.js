@@ -1023,9 +1023,14 @@ const stage = fs.mkdtempSync(path.join(require('os').tmpdir(), 'loent-'));
 const tempDir = path.join(stage, 'temp');
 fs.mkdirSync(tempDir, { recursive: true });
 // files: { 종류: 에셋 경로 } → temp/xx/yy/<종류>/<id>.<ext>
+// id 는 파일 '내용'의 해시: 그림이 바뀌면 파일명도 바뀌어, 엔트리 사이트·브라우저가
+// 예전에 올린 같은 이름의 그림(캐시)을 다시 쓰는 일이 없다
 const place = (files, ext) => {
-    const main = Object.values(files)[0];
-    const id = crypto.createHash('md5').update(`lights-out/${main}`).digest('hex');
+    const hash = crypto.createHash('md5');
+    for (const file of Object.values(files)) {
+        hash.update(fs.readFileSync(path.join(assetDir, file)));
+    }
+    const id = hash.digest('hex');
     const sub = path.join(id.slice(0, 2), id.slice(2, 4));
     for (const [kind, file] of Object.entries(files)) {
         const d = path.join(tempDir, sub, kind);
@@ -1050,7 +1055,7 @@ for (const o of project.objects) {
         delete s._file;
     }
 }
-project.name = 'LIGHTS OUT';
+project.name = 'LIGHTS OUT v2';
 fs.writeFileSync(path.join(tempDir, 'project.json'), JSON.stringify(project));
 if (outJson) {
     fs.mkdirSync(path.dirname(outJson), { recursive: true });
