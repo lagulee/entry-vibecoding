@@ -3,3 +3,4 @@ tools/test/harness/vendor/
 tools/test/harness/.work/
 tools/test/harness/shots/
 *.log
+build/

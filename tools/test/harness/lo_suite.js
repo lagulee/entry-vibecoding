@@ -232,15 +232,37 @@ module.exports = async (page) => {
     await t.btn('raceStart'); await t.wait(700);
     await t.shot('lo_09_countdown');
     await t.waitFor(async () => (await t.g('대전상태')) === 'PLAY', 6000);
+    const sym = (n, b) => { // 8가지 회전·뒤집기
+        const T = [(r, c) => [r, c], (r, c) => [c, n - 1 - r], (r, c) => [n - 1 - r, n - 1 - c], (r, c) => [n - 1 - c, r],
+            (r, c) => [r, n - 1 - c], (r, c) => [n - 1 - r, c], (r, c) => [c, r], (r, c) => [n - 1 - c, n - 1 - r]];
+        return T.map((f) => { const o = Array(n * n); for (let r = 0; r < n; r++) { for (let c = 0; c < n; c++) { const [r2, c2] = f(r, c); o[r2 * n + c2] = b[r * n + c]; } } return o.join(''); });
+    };
     let bA = await t.board(1);
     let bB = await t.board(2);
     let refA = S.solveMin(4, bA);
-    check('09 두 판이 같은 퍼즐로 시작, 최소 누름 수 4~6', bA.join('') === bB.join('') && refA.w >= 4 && refA.w <= 6 && bA.some((x) => x), `w=${refA.w} 판=${bA.join('')}`);
-    await t.wait(1200);
-    await t.shot('lo_09_ai_playing');
-    await t.waitFor(async () => (await t.g('대전상태')) !== 'PLAY', 15000);
-    check('09 AI(어려움)가 최소 해 그대로 판을 끔 → AI 라운드 승리', +(await t.g('라운드승자')) === 2 && +(await t.g('누른수2')) === refA.w && +(await t.g('켜진수2')) === 0,
-        `승자=${await t.g('라운드승자')} AI누름=${await t.g('누른수2')} 최소=${refA.w} 시간=${(+(await t.g('라운드시간'))).toFixed(1)}s`);
+    let refB = S.solveMin(4, bB);
+    check('09 내 판과 AI 판은 서로 다르고(회전·뒤집기로도 같지 않음) 최소 누름 수는 같음(4~6)',
+        !sym(4, bB).includes(bA.join('')) && refA.w === refB.w && refA.w >= 4 && refA.w <= 6 && bA.some((x) => x),
+        `내 판=${bA.join('')} AI 판=${bB.join('')} 최소=${refA.w}/${refB.w}`);
+    // 악용 재현: AI 가 누르는 칸을 그대로 내 판에 따라 누른다
+    let copied = 0;
+    let seen = 0;
+    while ((await t.g('대전상태')) === 'PLAY') {
+        const n2 = +(await t.g('누른수2'));
+        if (n2 > seen) {
+            seen = n2;
+            await t.cell(1, +(await t.g('AI목표')));
+            copied++;
+            if (copied === 1) {
+                await t.shot('lo_09_ai_playing');
+            }
+        } else {
+            await t.wait(40);
+        }
+    }
+    check('09 [악용 방지] AI 를 따라 눌러도 내 판은 풀리지 않음 → AI 승리',
+        +(await t.g('라운드승자')) === 2 && +(await t.g('누른수2')) === refB.w && +(await t.g('켜진수2')) === 0 && +(await t.g('켜진수1')) > 0 && copied >= refB.w - 1, // AI 의 마지막 누름으로 라운드가 끝나므로 그 직전까지 모두 따라 누름
+        `따라 누름 ${copied}번, 내 판 남은 불 ${await t.g('켜진수1')}, AI 누름 ${await t.g('누른수2')}(최소 ${refB.w}), ${(+(await t.g('라운드시간'))).toFixed(1)}s`);
     await t.wait(300);
     await t.shot('lo_09_round_ai');
     await t.waitFor(async () => (await t.g('오버레이')) === 'MATCH', 25000);
@@ -272,8 +294,19 @@ module.exports = async (page) => {
     await t.wait(300);
     await t.shot('lo_10_match_win');
 
+    // ---------------- 10b 동시에 끄면 무승부 ----------------
+    await t.btn('rematch');
+    await t.waitFor(async () => (await t.g('대전상태')) === 'PLAY', 8000);
+    await page.evaluate(() => { const V = (n) => Entry.variableContainer.getVariableByName(n); V('켜진수1').setValue(0); V('켜진수2').setValue(0); });
+    await t.waitFor(async () => (await t.g('오버레이')) === 'ROUND', 2000);
+    check('10b 같은 순간에 둘 다 끄면 무승부 → 점수 없음, 라운드 다시', +(await t.g('라운드승자')) === 0 && (await t.g('오버레이모양')) === 'ov_r_draw' && +(await t.g('점수1')) === 0 && +(await t.g('점수2')) === 0);
+    await t.wait(200);
+    await t.shot('lo_10b_draw');
+    await t.waitFor(async () => (await t.g('대전상태')) === 'COUNT', 4000);
+    check('10b 무승부 뒤 다음 라운드 시작', +(await t.g('라운드')) === 2);
+
     // ---------------- 11 2인 대전 (5×5): P1 = WASD+스페이스, P2 = 방향키+엔터 ----------------
-    await t.btn('raceMenu'); await t.wait(300);
+    await t.key('Escape'); await t.wait(400); // 무승부 시험 뒤 대전 중이므로 ESC 로 메뉴
     await t.btn('modePVP'); await t.wait(400);
     st = await btnStates();
     check('11 2인 대전 설정: 난이도 버튼 숨김', [49, 50, 51].every((id) => st[id - 1] === 0) && st[53] === 1);

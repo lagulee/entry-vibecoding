@@ -1,7 +1,7 @@
 'use strict';
 /**
  * LIGHTS OUT — 화면 레이아웃 (엔트리 무대 480×270, 중심 (0,0), y 위쪽 +)
- * 그림 생성(lo_art.js)과 블록 생성(build_lights_out.js)이 같은 좌표를 쓴다.
+ * 그림 설계(figma/lo_design.js)와 블록 생성(build_lights_out.js)이 같은 좌표를 쓴다.
  */
 
 const STAGE = { w: 480, h: 270 };
@@ -19,16 +19,16 @@ const tilePos = (k) => ({ x: TILE.x0 + ((k - 1) % 10) * TILE.dx, y: TILE.rows[Ma
 
 // 스킨
 const SKINS = [
-    { id: 1, key: 'bulb', name: '따뜻한 전구', need: 0 },
-    { id: 2, key: 'neon', name: '네온 사인', need: 20 },
+    { id: 1, key: 'window', name: '불 켜진 창문', need: 0 },
+    { id: 2, key: 'bulb', name: '알전구', need: 20 },
     { id: 3, key: 'star', name: '별빛', need: 45 },
 ];
 
 // AI 난이도: 누름 간격(초) · 실수 확률(%) · 설명
 const AI_LEVELS = [
-    { id: 1, key: 'easy', name: '쉬움', delay: 3.0, miss: 35, desc: '천천히 · 가끔 실수' },
-    { id: 2, key: 'normal', name: '보통', delay: 1.9, miss: 15, desc: '적당히 빠름' },
-    { id: 3, key: 'hard', name: '어려움', delay: 1.1, miss: 0, desc: '최소 해만 누름' },
+    { id: 1, key: 'easy', name: '쉬움', delay: 3.0, miss: 35, desc: '느긋하게, 가끔 실수' },
+    { id: 2, key: 'normal', name: '보통', delay: 1.9, miss: 15, desc: '제법 빠릿빠릿' },
+    { id: 3, key: 'hard', name: '어려움', delay: 1.1, miss: 0, desc: '실수 없이 최소 횟수' },
 ];
 
 // 대전 판: 크기별 최소 누름 수 범위 (AI 풀이기로 확인한 뒤 채택)
@@ -42,51 +42,51 @@ function btn(id, key, screen, x, y, w, h, label, kind = 'ghost', extra = {}) {
 
 // TITLE — 모드 카드 3개 + 작은 버튼
 btn(1, 'modePuzzle', 'TITLE', -150, -22, 132, 96, '퍼즐 모드', 'card', {
-    tag: '1P · SOLO', icon: 'puzzle', desc: ['30 스테이지 · 3×3 ~ 5×5', 'AI 힌트 · AI 풀이 보기'], color: '#ffcf4d',
+    tag: '혼자서', icon: 'puzzle', desc: ['30 스테이지, 3×3부터 5×5까지', '막히면 AI가 힌트를 줘요'], color: '#FFCF5A',
 });
 btn(2, 'modeAI', 'TITLE', 0, -22, 132, 96, 'AI 대전', 'card', {
-    tag: '1P vs AI', icon: 'ai', desc: ['같은 판, 먼저 끄면 승리', '난이도 3단계 · 3판 2선승'], color: '#b388ff',
+    tag: '나 vs AI', icon: 'ai', desc: ['난이도는 같고 판은 달라요', '먼저 다 끄면 승리! 3판 2선승'], color: '#A99BE0',
 });
 btn(3, 'modePVP', 'TITLE', 150, -22, 132, 96, '2인 대전', 'card', {
-    tag: '1P vs 2P', icon: 'pvp', desc: ['한 키보드로 친구와 대결', 'WASD ⇄ 방향키'], color: '#ff5fa2',
+    tag: '나 vs 친구', icon: 'pvp', desc: ['키보드 하나로 둘이서', 'WASD 대 방향키'], color: '#F08A7E',
 });
-btn(4, 'help', 'TITLE', -52, -100, 96, 22, '게임 방법', 'ghost', { icon: '?' });
-btn(5, 'skin', 'TITLE', 52, -100, 96, 22, '전구 스킨', 'ghost', { icon: '✦' });
+btn(4, 'help', 'TITLE', -52, -100, 96, 22, '게임 방법', 'ghost', { icon: 'help' });
+btn(5, 'skin', 'TITLE', 52, -100, 96, 22, '스킨', 'ghost', { icon: 'star' });
 
 // HELP / SKIN
-btn(6, 'helpBack', 'HELP', 0, -112, 96, 20, '← 돌아가기', 'ghost');
+btn(6, 'helpBack', 'HELP', 0, -112, 96, 20, '돌아가기', 'ghost', { icon: 'back' });
 SKINS.forEach((s, k) => btn(7 + k, `skin${s.id}`, 'SKIN', -140 + k * 140, 2, 124, 128, s.name, 'skincard', { skin: s }));
-btn(10, 'skinBack', 'SKIN', 0, -112, 96, 20, '← 돌아가기', 'ghost');
+btn(10, 'skinBack', 'SKIN', 0, -112, 96, 20, '돌아가기', 'ghost', { icon: 'back' });
 
 // STAGES — 타일 30개 (id 11~40) + 돌아가기
 for (let k = 1; k <= 30; k++) {
     const p = tilePos(k);
     btn(10 + k, `stage${k}`, 'STAGES', p.x, p.y, TILE.w, TILE.h, String(k), 'tile', { stage: k });
 }
-btn(41, 'stagesBack', 'STAGES', -176, 113, 64, 18, '← 메뉴', 'ghost');
+btn(41, 'stagesBack', 'STAGES', -176, 113, 64, 18, '메뉴', 'ghost', { icon: 'back' });
 
 // PUZZLE — 오른쪽 패널
 const PX = 142;
-btn(42, 'hint', 'PUZZLE', PX - 42, -58, 80, 24, 'AI 힌트', 'ai', { icon: '💡' });
-btn(43, 'solve', 'PUZZLE', PX + 42, -58, 80, 24, 'AI 풀이', 'ai', { icon: '◎' });
-btn(44, 'retry', 'PUZZLE', PX - 42, -88, 80, 22, '↻ 다시하기', 'ghost');
-btn(45, 'list', 'PUZZLE', PX + 42, -88, 80, 22, '☰ 목록', 'ghost');
+btn(42, 'hint', 'PUZZLE', PX - 42, -58, 80, 24, 'AI 힌트', 'ai', { icon: 'bulb' });
+btn(43, 'solve', 'PUZZLE', PX + 42, -58, 80, 24, 'AI 풀이', 'ai', { icon: 'eye' });
+btn(44, 'retry', 'PUZZLE', PX - 42, -88, 80, 22, '다시하기', 'ghost', { icon: 'retry' });
+btn(45, 'list', 'PUZZLE', PX + 42, -88, 80, 22, '목록', 'ghost', { icon: 'list' });
 // PUZZLE 클리어 오버레이
-btn(46, 'next', 'PUZZLE', 0, -58, 104, 24, '다음 스테이지 ▶', 'primary', { overlay: 'CLEAR' });
-btn(47, 'clearRetry', 'PUZZLE', -96, -58, 76, 24, '↻ 다시', 'ghost', { overlay: 'CLEAR' });
-btn(48, 'clearList', 'PUZZLE', 96, -58, 76, 24, '☰ 목록', 'ghost', { overlay: 'CLEAR' });
+btn(46, 'next', 'PUZZLE', 0, -58, 104, 24, '다음 스테이지', 'primary', { overlay: 'CLEAR', icon: 'play' });
+btn(47, 'clearRetry', 'PUZZLE', -96, -58, 76, 24, '다시', 'ghost', { overlay: 'CLEAR', icon: 'retry' });
+btn(48, 'clearList', 'PUZZLE', 96, -58, 76, 24, '목록', 'ghost', { overlay: 'CLEAR', icon: 'list' });
 
 // VSSET — 대전 설정
 AI_LEVELS.forEach((l, k) => btn(49 + k, `lv${l.id}`, 'VSSET', -110 + k * 110, 34, 100, 44, l.name, 'seg', { level: l }));
 btn(52, 'size4', 'VSSET', -46, -30, 84, 24, '4 × 4', 'seg');
 btn(53, 'size5', 'VSSET', 46, -30, 84, 24, '5 × 5', 'seg');
-btn(54, 'raceStart', 'VSSET', 0, -78, 130, 28, '대결 시작 ▶', 'primary');
-btn(55, 'vsBack', 'VSSET', -176, 113, 64, 18, '← 메뉴', 'ghost');
+btn(54, 'raceStart', 'VSSET', 0, -78, 130, 28, '대결 시작', 'primary', { icon: 'play' });
+btn(55, 'vsBack', 'VSSET', -176, 113, 64, 18, '메뉴', 'ghost', { icon: 'back' });
 
 // RACE
 btn(56, 'raceExit', 'RACE', 208, 118, 52, 18, '나가기', 'ghost');
-btn(57, 'rematch', 'RACE', -62, -60, 108, 26, '↻ 다시 대결', 'primary', { overlay: 'MATCH' });
-btn(58, 'raceMenu', 'RACE', 62, -60, 108, 26, '☰ 메뉴', 'ghost', { overlay: 'MATCH' });
+btn(57, 'rematch', 'RACE', -62, -60, 108, 26, '다시 대결', 'primary', { overlay: 'MATCH', icon: 'retry' });
+btn(58, 'raceMenu', 'RACE', 62, -60, 108, 26, '메뉴', 'ghost', { overlay: 'MATCH', icon: 'list' });
 
 const BUTTON_COUNT = 58;
 const BUTTONS = B.sort((a, b) => a.id - b.id);
@@ -108,15 +108,15 @@ const TEXT = {
     vsTitle: { x: 0, y: 100, w: 300, h: 22 },
     vsSub: { x: 0, y: 80, w: 360, h: 14 },
     vsInfo: { x: 0, y: -104, w: 420, h: 14 },
-    score: { x: 0, y: 106, w: 120, h: 30 },
-    round: { x: 0, y: 84, w: 120, h: 14 },
-    name1: { x: -114, y: 100, w: 172, h: 16 },
-    name2: { x: 114, y: 100, w: 172, h: 16 },
+    score: { x: 0, y: 103, w: 90, h: 24 },
+    round: { x: 0, y: 121, w: 90, h: 10 },
+    name1: { x: -114, y: 106, w: 172, h: 16 },
+    name2: { x: 114, y: 106, w: 172, h: 16 },
     keys1: { x: -114, y: -113, w: 172, h: 14 },
     keys2: { x: 114, y: -113, w: 172, h: 14 },
-    left1: { x: -114, y: 87, w: 172, h: 12 },
-    left2: { x: 114, y: 87, w: 172, h: 12 },
-    timer: { x: 0, y: -40, w: 54, h: 14 },
+    left1: { x: -114, y: 94, w: 172, h: 12 },
+    left2: { x: 114, y: 94, w: 172, h: 12 },
+    timer: { x: 0, y: -40, w: 40, h: 14 },
     result: { x: 0, y: -18, w: 260, h: 30 },
 };
 

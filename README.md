@@ -17,12 +17,14 @@
 |---|---|
 | ![](docs/images/lo_05_hint.png) | ![](docs/images/lo_10_race_both.png) |
 
-- **퍼즐 모드 (1인)**: 3×3 → 4×4 → 5×5, 30 스테이지. AI 최소 횟수로 깨면 ★★★, 막히면 **AI 힌트**(한 칸) / **AI 풀이**(전부 표시). 모은 별로 전구 스킨 3종 해금.
-- **AI 대전 (1인 vs AI)**: 같은 판을 먼저 끄면 승리, 3판 2선승, 난이도 쉬움/보통/어려움, 판 4×4/5×5.
+- **퍼즐 모드 (1인)**: 3×3 → 4×4 → 5×5, 30 스테이지. AI 최소 횟수로 깨면 ★★★, 막히면 **AI 힌트**(한 칸) / **AI 풀이**(전부 표시). 모은 별로 스킨 3종(창문·알전구·별빛) 해금.
+- **AI 대전 (1인 vs AI)**: 난이도가 같은 서로 다른 판을 먼저 끄면 승리, 3판 2선승, 난이도 쉬움/보통/어려움, 판 4×4/5×5.
 - **2인 대전**: 한 키보드로 P1(WASD+스페이스) vs P2(방향키+엔터), 마우스도 가능.
 - **AI 원리**: 판을 0/1 연립방정식(mod 2)으로 보고 가우스 소거 → 해 중 누름 수가 가장 적은 해를 선택 (빌드 때 계산한 행렬을 블록으로 펼쳐 한 프레임에 계산).
 - 제작 전 엔트리 **스태프 선정·인기 작품**(ON-OFF 퍼즐, AI 오목, 1인/2인 게임모음 등)과 스태프 선정 기준(독창성·완성도·발전 가능성)을 분석해 구성과 디자인에 반영했습니다 → [docs/LIGHTS_OUT.md](docs/LIGHTS_OUT.md) PART 1.
-- 검증: 풀이기 독립 검증(3×3·4×4 전체, 5×5 3000판) + **실제 엔트리 엔진 테스트 45/45 PASS**.
+- **디자인**: Figma 에서 그린 밤 동네 일러스트(창문 칸, 종이 카드, 손글씨 메모) — 설계 코드 `tools/figma/lo_design.js` 를 `use_figma` 로 실행해 편집 가능한 벡터·텍스트·컴포넌트로 만들고, 그 캡처를 잘라 게임 그림으로 씁니다.
+- **공정한 대전**: 두 사람은 최소 횟수가 같은 서로 다른 판을 받습니다(회전·뒤집기로도 같지 않음) → 상대(AI)를 따라 누르는 악용이 통하지 않고, 동시에 끄면 무승부입니다.
+- 검증: 풀이기 독립 검증(3×3·4×4 전체, 5×5 3000판) + **실제 엔트리 엔진 테스트 47/47 PASS** (따라 누르기 악용 재현 테스트 포함).
 
 실행: playentry.org 작품 만들기 → 파일 → **오프라인 작품 불러오기** → `dist/LIGHTS_OUT.ent` → ▶ 시작하기.
 
@@ -75,11 +77,13 @@ npm run test:entry     # .ent 를 실제 entryjs 엔진에 불러와 TEST 01~10 
 npm run test:perf      # 천체 수 · 배속별 프레임 측정
 
 # LIGHTS OUT
-npm run lo:art         # (선택) 그림 다시 만들기 → assets/lights_out/
+npm run lo:preview     # (선택) 그림 설계를 로컬에서 미리 보기 → build/preview/
+npm run lo:figma-script # (선택) Figma use_figma 용 빌드 스크립트 → tools/figma/out/
+npm run lo:slice       # Figma 캡처(tools/figma/export/) → assets/lights_out/ 그림·섬네일
 npm run lo:sound       # (선택) 효과음 다시 만들기 → assets/lights_out/sound/
 npm run lo:build       # → dist/LIGHTS_OUT.ent, docs/LIGHTS_OUT_BLOCKS.md
 npm run lo:test:solver # AI 풀이기 독립 검증 (BFS · 불 쫓기)
-npm run lo:test        # .ent 를 실제 entryjs 엔진에서 45개 테스트
+npm run lo:test        # .ent 를 실제 entryjs 엔진에서 47개 테스트
 ```
 
 `npm run build` 는 Node 만 있으면 됩니다. 그림(`assets/`)은 저장소에 포함되어 있습니다.
@@ -99,10 +103,13 @@ tools/gl_blockdoc.js        작품 → 엔트리 블록 문구 문서
 tools/test/                 기준 시뮬레이터, 실제 엔진 테스트 하네스
 
 dist/LIGHTS_OUT.ent         LIGHTS OUT 완성 작품
-assets/lights_out/          그림(2배 PNG + thumb/) · sound/(MP3)
+assets/lights_out/          그림(2배 PNG + thumb/, Figma 캡처에서 자름) · sound/(MP3)
 tools/lo_solver.js          GF(2) 풀이기 · 스테이지 생성
 tools/lo_layout.js          화면 레이아웃 · 버튼 · 난이도 · 스킨
-tools/lo_art.js             그림 생성 (HTML → Chromium PNG)
+tools/figma/lo_design.js    그림 설계 (Figma 빌드 · 로컬 미리보기 공용)
+tools/figma/lo_figma_script.js, lo_figma_patch.js   use_figma 스크립트 생성 (전체 / 일부)
+tools/figma/lo_slice.js     검은·흰 배경 캡처 → 투명도 복원 → 그림 자르기
+tools/figma/export/         Figma 시트 캡처 원본
 tools/lo_sound.js           효과음 합성 (PCM → MP3, lamejs)
 tools/build_lights_out.js   작품 조립 + .ent 패키징(그림·섬네일·소리)
 tools/test/lo_solver_selftest.js, tools/test/harness/lo_suite.js   검증

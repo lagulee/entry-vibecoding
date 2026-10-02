@@ -1,52 +1,4 @@
 {
- "scr_title": {
-  "file": "scr_title.png",
-  "thumb": "thumb/scr_title.png",
-  "width": 960,
-  "height": 540
- },
- "scr_help": {
-  "file": "scr_help.png",
-  "thumb": "thumb/scr_help.png",
-  "width": 960,
-  "height": 540
- },
- "scr_skin": {
-  "file": "scr_skin.png",
-  "thumb": "thumb/scr_skin.png",
-  "width": 960,
-  "height": 540
- },
- "scr_stages": {
-  "file": "scr_stages.png",
-  "thumb": "thumb/scr_stages.png",
-  "width": 960,
-  "height": 540
- },
- "scr_puzzle": {
-  "file": "scr_puzzle.png",
-  "thumb": "thumb/scr_puzzle.png",
-  "width": 960,
-  "height": 540
- },
- "scr_vsset_ai": {
-  "file": "scr_vsset_ai.png",
-  "thumb": "thumb/scr_vsset_ai.png",
-  "width": 960,
-  "height": 540
- },
- "scr_vsset_pvp": {
-  "file": "scr_vsset_pvp.png",
-  "thumb": "thumb/scr_vsset_pvp.png",
-  "width": 960,
-  "height": 540
- },
- "scr_race": {
-  "file": "scr_race.png",
-  "thumb": "thumb/scr_race.png",
-  "width": 960,
-  "height": 540
- },
  "c1_0": {
   "file": "c1_0.png",
   "thumb": "thumb/c1_0.png",
@@ -737,6 +689,54 @@
   "width": 216,
   "height": 52
  },
+ "scr_title": {
+  "file": "scr_title.png",
+  "thumb": "thumb/scr_title.png",
+  "width": 960,
+  "height": 540
+ },
+ "scr_help": {
+  "file": "scr_help.png",
+  "thumb": "thumb/scr_help.png",
+  "width": 960,
+  "height": 540
+ },
+ "scr_skin": {
+  "file": "scr_skin.png",
+  "thumb": "thumb/scr_skin.png",
+  "width": 960,
+  "height": 540
+ },
+ "scr_stages": {
+  "file": "scr_stages.png",
+  "thumb": "thumb/scr_stages.png",
+  "width": 960,
+  "height": 540
+ },
+ "scr_puzzle": {
+  "file": "scr_puzzle.png",
+  "thumb": "thumb/scr_puzzle.png",
+  "width": 960,
+  "height": 540
+ },
+ "scr_vsset_ai": {
+  "file": "scr_vsset_ai.png",
+  "thumb": "thumb/scr_vsset_ai.png",
+  "width": 960,
+  "height": 540
+ },
+ "scr_vsset_pvp": {
+  "file": "scr_vsset_pvp.png",
+  "thumb": "thumb/scr_vsset_pvp.png",
+  "width": 960,
+  "height": 540
+ },
+ "scr_race": {
+  "file": "scr_race.png",
+  "thumb": "thumb/scr_race.png",
+  "width": 960,
+  "height": 540
+ },
  "ov_clear1": {
   "file": "ov_clear1.png",
   "thumb": "thumb/ov_clear1.png",
@@ -800,6 +800,12 @@
  "ov_r_ai": {
   "file": "ov_r_ai.png",
   "thumb": "thumb/ov_r_ai.png",
+  "width": 960,
+  "height": 540
+ },
+ "ov_r_draw": {
+  "file": "ov_r_draw.png",
+  "thumb": "thumb/ov_r_draw.png",
   "width": 960,
   "height": 540
  },

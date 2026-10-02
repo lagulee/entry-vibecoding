@@ -4,7 +4,7 @@
  *
  *   node tools/build_lights_out.js <에셋폴더> <출력 .ent 경로> [project.json 경로]
  *
- * 에셋 폴더: tools/lo_art.js 가 만든 PNG + manifest.json, sound/ (tools/lo_sound.js)
+ * 에셋 폴더: Figma 에서 그린 시트를 잘라 만든 PNG + manifest.json (tools/figma/), sound/ (tools/lo_sound.js)
  * .ent = tar.gz { temp/project.json, temp/xx/yy/image|thumb/<id>.png, temp/xx/yy/sound/<id>.mp3 }
  */
 const fs = require('fs');
@@ -78,7 +78,7 @@ const GV = {
     // 대전
     AI난이도: 2, AI간격: 1.9, AI실수: 15, 대전크기: 4, 목표최소: 4, 목표최대: 6, 라운드: 0, 점수1: 0, 점수2: 0,
     대전상태: '', 라운드승자: 0, 라운드시작: 0, 라운드시간: 0, 대전세대: 0, 진행세대: 0, AI세대: 0, AI라운드: 0, AI목표: 0,
-    누른수1: 0, 누른수2: 0, 생성시도: 0,
+    누른수1: 0, 누른수2: 0, 생성시도: 0, 목표수: 0, 같은판: 0,
 };
 for (const [k, x] of Object.entries(GV)) {
     P.variable(k, x);
@@ -266,6 +266,29 @@ defineFunction('판 복사', ['보드1을 보드2로 복사'], () => [
     ...seq(MAXN).map((i) => setItem('보드2', i, item('보드1', i))),
     setv('켜진수2', v('켜진수1')),
 ]);
+
+// 보드1 이 보드2 와 같거나, 돌리거나 뒤집으면 같은 판인지 → 같은판 = 1
+// (대전에서 상대가 누르는 칸을 그대로/거울처럼 따라 해서 이득을 보지 못하게 한다)
+{
+    const transforms = [
+        (r, c, n) => [r, c], (r, c, n) => [c, n - 1 - r], (r, c, n) => [n - 1 - r, n - 1 - c], (r, c, n) => [n - 1 - c, r],
+        (r, c, n) => [r, n - 1 - c], (r, c, n) => [n - 1 - r, c], (r, c, n) => [c, r], (r, c, n) => [n - 1 - c, n - 1 - r],
+    ];
+    const sameUnder = (n) => transforms.map((T) => {
+        const terms = [];
+        for (let r = 0; r < n; r++) {
+            for (let c = 0; c < n; c++) {
+                const [r2, c2] = T(r, c, n);
+                terms.push(G.abs(sub(item('보드1', r * n + c + 1), item('보드2', r2 * n + c2 + 1))));
+            }
+        }
+        return If(eq(sumOf(terms), 0), [setv('같은판', 1)]);
+    });
+    defineFunction('판 비교', ['두 판이 같은 모양인지 비교'], () => [
+        setv('같은판', 0),
+        IfElse(eq(v('판크기'), 4), sameUnder(4), sameUnder(5)),
+    ]);
+}
 
 // ---------------------------------------------------------------------------
 // 화면 / 버튼
@@ -518,8 +541,11 @@ const boardXY = (b, k) => {
         Forever([
             chgv('프레임수', 1),
             If(and(eq(v('화면'), 'RACE'), eq(v('대전상태'), 'PLAY')), [
-                IfElse(eq(v('켜진수1'), 0), [setv('라운드승자', 1), setv('대전상태', 'ROUNDEND'), send('라운드 종료')], [
-                    If(eq(v('켜진수2'), 0), [setv('라운드승자', 2), setv('대전상태', 'ROUNDEND'), send('라운드 종료')]),
+                // 같은 프레임에 둘 다 끄면 무승부(라운드 다시)
+                IfElse(and(eq(v('켜진수1'), 0), eq(v('켜진수2'), 0)), [setv('라운드승자', 0), setv('대전상태', 'ROUNDEND'), send('라운드 종료')], [
+                    IfElse(eq(v('켜진수1'), 0), [setv('라운드승자', 1), setv('대전상태', 'ROUNDEND'), send('라운드 종료')], [
+                        If(eq(v('켜진수2'), 0), [setv('라운드승자', 2), setv('대전상태', 'ROUNDEND'), send('라운드 종료')]),
+                    ]),
                 ]),
             ]),
         ])
@@ -540,8 +566,19 @@ const boardXY = (b, k) => {
             call('풀이 계산', 1),
             chgv('생성시도', 1),
         ]),
-        stopIfStale(),
+        // 상대(보드2) 판을 먼저 정하고, 내 판(보드1)은 최소 누름 수가 똑같은 '다른' 판으로 다시 만든다
+        //  → 난이도는 같지만 상대가 누르는 칸을 따라 눌러도 내 판은 풀리지 않는다
         call('판 복사'),
+        setv('목표수', v('풀이수')),
+        setv('풀이수', -1),
+        setv('같은판', 1),
+        Until(and(eq(v('풀이수'), v('목표수')), eq(v('같은판'), 0)), [
+            call('무작위 판'),
+            call('풀이 계산', 1),
+            call('판 비교'),
+            chgv('생성시도', 1),
+        ]),
+        stopIfStale(),
         setv('커서1', center()),
         setv('커서2', center()),
         setv('누른수1', 0),
@@ -566,10 +603,13 @@ const boardXY = (b, k) => {
     P.addThread(o, onMsg('라운드 종료',
         setv('진행세대', v('대전세대')),
         setv('라운드시간', div(sub(v('프레임수'), v('라운드시작')), 60)),
-        IfElse(eq(v('라운드승자'), 1), [chgv('점수1', 1)], [chgv('점수2', 1)]),
-        IfElse(aiMode,
-            [IfElse(eq(v('라운드승자'), 1), [setv('오버레이모양', 'ov_r_you'), sfx('round')], [setv('오버레이모양', 'ov_r_ai'), sfx('lose')])],
-            [IfElse(eq(v('라운드승자'), 1), [setv('오버레이모양', 'ov_r_p1')], [setv('오버레이모양', 'ov_r_p2')]), sfx('round')]),
+        If(eq(v('라운드승자'), 1), [chgv('점수1', 1)]),
+        If(eq(v('라운드승자'), 2), [chgv('점수2', 1)]),
+        IfElse(eq(v('라운드승자'), 0), [setv('오버레이모양', 'ov_r_draw'), sfx('round')], [
+            IfElse(aiMode,
+                [IfElse(eq(v('라운드승자'), 1), [setv('오버레이모양', 'ov_r_you'), sfx('round')], [setv('오버레이모양', 'ov_r_ai'), sfx('lose')])],
+                [IfElse(eq(v('라운드승자'), 1), [setv('오버레이모양', 'ov_r_p1')], [setv('오버레이모양', 'ov_r_p2')]), sfx('round')]),
+        ]),
         setv('오버레이', 'ROUND'),
         call('버튼 갱신'),
         Wait(1.8),
@@ -725,8 +765,10 @@ function textBox(name, cfg, opts, visibleCond, bodyFn, every = 4) {
     ])));
     return o;
 }
-const KR = 'Nanum Gothic';
-const MONO = 'D2 Coding';
+// 글상자 글꼴: 엔트리 기본 글꼴 중 Figma 그림의 둥근 글씨(Jua)와 어울리는 나눔스퀘어라운드
+const KR = 'NanumSquareRound';
+const MONO = 'NanumSquareRound';
+const INK = '#1E2235';
 const inPuzzle = () => eq(v('화면'), 'PUZZLE');
 const inRace = () => eq(v('화면'), 'RACE');
 const aiMode = () => eq(v('모드'), 'AI');
@@ -734,32 +776,32 @@ const raceTime = () => IfElse(eq(v('대전상태'), 'PLAY'),
     [write(join(fmt1(div(sub(v('프레임수'), v('라운드시작')), 60)), 's'))],
     [IfElse(or(eq(v('대전상태'), 'ROUNDEND'), eq(v('대전상태'), 'MATCHEND')), [write(join(fmt1(v('라운드시간')), 's'))], [write('0.0s')])]);
 
-textBox('결과문구', L.TEXT.result, { fontSize: 9, font: KR, colour: '#dfe6ff' },
+textBox('결과문구', L.TEXT.result, { fontSize: 9, font: KR, bold: true, colour: INK },
     () => or(and(inPuzzle(), eq(v('오버레이'), 'CLEAR')), and(inRace(), eq(v('오버레이'), 'MATCH'))), () => [
         IfElse(inPuzzle(),
             [write(join('이동 ', v('이동수'), '회 · AI 최소 ', v('최소수'), '회', NL, v('결과메모')))],
             [write(join('최종 스코어 ', v('점수1'), ' : ', v('점수2'), '  ·  ', v('라운드'), '라운드'))]),
     ], 6);
 // 별 개수 (타이틀 · 스테이지 · 스킨 화면 — 화면마다 위치를 옮긴다)
-textBox('별개수', T.titleStars, { fontSize: 9, font: KR, colour: '#ffd65c', bold: true },
+textBox('별개수', T.titleStars, { fontSize: 9, font: KR, colour: INK, bold: true },
     () => or(or(eq(v('화면'), 'TITLE'), eq(v('화면'), 'STAGES')), eq(v('화면'), 'SKIN')), () => [
         IfElse(eq(v('화면'), 'STAGES'), [goXY(T.stagesStars.x, T.stagesStars.y)],
             [IfElse(eq(v('화면'), 'SKIN'), [goXY(0, -84)], [goXY(T.titleStars.x, T.titleStars.y)])]),
         write(join('★ ', v('총별'), ' / 90')),
     ], 10);
 // 퍼즐 모드 패널
-textBox('스테이지제목', T.stageTitle, { fontSize: 15, font: KR, bold: true, colour: '#fff3c8' }, inPuzzle, () => [
+textBox('스테이지제목', T.stageTitle, { fontSize: 15, font: KR, bold: true, colour: INK }, inPuzzle, () => [
     write(join('STAGE ', v('스테이지'))),
 ], 10);
-textBox('스테이지정보', T.stageSub, { fontSize: 7, font: KR, colour: '#8e9ac0' }, inPuzzle, () => [
+textBox('스테이지정보', T.stageSub, { fontSize: 7, font: KR, colour: '#6B6F82' }, inPuzzle, () => [
     write(join(v('판크기'), '×', v('판크기'), ' · 최고 기록 ', item('별', v('스테이지')), '★ · 남은 불 ', v('켜진수1'), '개')),
 ], 5);
-textBox('이동수', T.moves, { fontSize: 20, font: MONO, bold: true, colour: '#eef2ff' }, inPuzzle, () => [write(v('이동수'))], 2);
-textBox('최소수', T.par, { fontSize: 20, font: MONO, bold: true, colour: '#c9b0ff' }, inPuzzle, () => [write(v('최소수'))], 10);
-textBox('별조건', T.goal, { fontSize: 7, font: KR, colour: '#ffd65c' }, inPuzzle, () => [
+textBox('이동수', T.moves, { fontSize: 20, font: MONO, bold: true, colour: INK }, inPuzzle, () => [write(v('이동수'))], 2);
+textBox('최소수', T.par, { fontSize: 20, font: MONO, bold: true, colour: '#6C5BB8' }, inPuzzle, () => [write(v('최소수'))], 10);
+textBox('별조건', T.goal, { fontSize: 7, font: KR, bold: true, colour: '#B26A00' }, inPuzzle, () => [
     write(join('★★★ ', v('최소수'), '회 이하 · ★★ ', add(v('최소수'), 2), '회 이하')),
 ], 10);
-textBox('AI안내', T.aiMsg, { fontSize: 7.5, font: KR, colour: '#e3d6ff' }, inPuzzle, () => [
+textBox('AI안내', T.aiMsg, { fontSize: 7.5, font: KR, bold: true, colour: '#3B2F7A' }, inPuzzle, () => [
     IfElse(eq(v('풀이보기'), 1), [write(join('AI 풀이: 보라색 점이 찍힌 칸을', NL, '모두 누르면 끝! (남은 최소 ', v('풀이수'), '번)'))], [
         IfElse(gt(v('힌트칸'), 0), [write(join('AI 힌트: 테두리가 빛나는 칸을', NL, '눌러 보세요 (남은 최소 ', v('풀이수'), '번)'))], [
             write(join('막히면 AI에게 물어보세요', NL, '힌트 H · 다시 R · 메뉴 ESC')),
@@ -767,38 +809,38 @@ textBox('AI안내', T.aiMsg, { fontSize: 7.5, font: KR, colour: '#e3d6ff' }, inP
     ]),
 ], 4);
 // 대전 화면
-textBox('점수', T.score, { fontSize: 18, font: MONO, bold: true, colour: '#eef2ff' }, inRace, () => [
+textBox('점수', T.score, { fontSize: 16, font: MONO, bold: true, colour: INK }, inRace, () => [
     write(join(v('점수1'), ' : ', v('점수2'))),
 ], 6);
-textBox('라운드', T.round, { fontSize: 6.5, font: KR, colour: '#8e9ac0' }, inRace, () => [
+textBox('라운드', T.round, { fontSize: 6, font: KR, bold: true, colour: '#6B6F82' }, inRace, () => [
     write(join('ROUND ', v('라운드'), ' · 3판 2선승')),
 ], 10);
-textBox('시간', T.timer, { fontSize: 7.5, font: MONO, colour: '#ffd65c' }, inRace, () => [raceTime()], 3);
-textBox('이름1', T.name1, { fontSize: 9, font: KR, bold: true, colour: '#4fd6ff' }, inRace, () => [
+textBox('시간', T.timer, { fontSize: 7.5, font: MONO, bold: true, colour: INK }, inRace, () => [raceTime()], 3);
+textBox('이름1', T.name1, { fontSize: 9, font: KR, bold: true, colour: '#7EC4E8' }, inRace, () => [
     IfElse(aiMode(), [write('YOU · PLAYER 1')], [write('PLAYER 1')]),
 ], 20);
-textBox('이름2', T.name2, { fontSize: 9, font: KR, bold: true, colour: '#ff7ab8' }, inRace, () => [
+textBox('이름2', T.name2, { fontSize: 9, font: KR, bold: true, colour: '#F08A7E' }, inRace, () => [
     IfElse(aiMode(), [
         ...L.AI_LEVELS.map((l) => If(eq(v('AI난이도'), l.id), [write(`AI · ${l.name}`)])),
     ], [write('PLAYER 2')]),
 ], 20);
-textBox('남은불1', T.left1, { fontSize: 6.5, font: KR, colour: '#8e9ac0' }, inRace, () => [
+textBox('남은불1', T.left1, { fontSize: 6.5, font: KR, colour: '#C9CDE0' }, inRace, () => [
     write(join('남은 불 ', v('켜진수1'), ' · 누른 횟수 ', v('누른수1'))),
 ], 3);
-textBox('남은불2', T.left2, { fontSize: 6.5, font: KR, colour: '#8e9ac0' }, inRace, () => [
+textBox('남은불2', T.left2, { fontSize: 6.5, font: KR, colour: '#C9CDE0' }, inRace, () => [
     write(join('남은 불 ', v('켜진수2'), ' · 누른 횟수 ', v('누른수2'))),
 ], 3);
-textBox('조작1', T.keys1, { fontSize: 6.5, font: KR, colour: '#6f7ba3' }, inRace, () => [
+textBox('조작1', T.keys1, { fontSize: 6.5, font: KR, colour: '#8E95B5' }, inRace, () => [
     IfElse(aiMode(), [write('클릭 · WASD/방향키 + SPACE/ENTER')], [write('클릭 · WASD 이동 + SPACE 누르기')]),
 ], 20);
-textBox('조작2', T.keys2, { fontSize: 6.5, font: KR, colour: '#6f7ba3' }, inRace, () => [
+textBox('조작2', T.keys2, { fontSize: 6.5, font: KR, colour: '#8E95B5' }, inRace, () => [
     IfElse(aiMode(), [write('AI는 매 수마다 판을 다시 풀어요')], [write('클릭 · 방향키 이동 + ENTER 누르기')]),
 ], 20);
 
 // 5) 오버레이 (클리어 · 카운트다운 · 라운드 · 대전 결과)
 {
     const names = ['ov_clear1', 'ov_clear2', 'ov_clear3', 'ov_c3', 'ov_c2', 'ov_c1', 'ov_cGO',
-        'ov_r_p1', 'ov_r_p2', 'ov_r_you', 'ov_r_ai', 'ov_m_p1', 'ov_m_p2', 'ov_m_win', 'ov_m_lose'];
+        'ov_r_p1', 'ov_r_p2', 'ov_r_you', 'ov_r_ai', 'ov_r_draw', 'ov_m_p1', 'ov_m_p2', 'ov_m_win', 'ov_m_lose'];
     const o = P.sprite({ name: '오버레이', pictures: names.map(pic), entity: { scale: HALF, visible: false } });
     P.addThread(o, onStart(hide(), goXY(0, 0), setv('오버레이현재', ''), Forever([
         IfElse(eq(v('오버레이'), ''), [If(ne(v('오버레이현재'), ''), [setv('오버레이현재', ''), hide()])], [
